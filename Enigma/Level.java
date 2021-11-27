@@ -94,44 +94,18 @@ public class Level extends Questions
      *@return string
      */
 
-    public String playerAnswer(){
+    public static String playerAnswer()
+    {
         if(questions.containsKey(player)){
-            System.out.println(questions.get(player));
+            return(questions.get(player));
         }
+        
         else{
-            System.out.println("error");
+            return("This is not a valid number!");
         }
-
-        
-        return "playerAnswer() TEST RETURN STRING";
     }
 
-    /**
-     * This methods checks whether the player has the correct answer or not. If he does not, he can try again
-     *@param no parameter
-     * @return the next enigma 
-     */
-    /**
-    private String goodAnswer(){
-
-        boolean good_ans=false;
-        
-         answer=sc.next();
-        
-        while(!solutions.get(player).equals(answer)){
-            System.out.println("Incorrect !\nTry again");
-            System.out.println("HINT:"+ hint.hint());
-            answer=sc.next();
-        }
-        
-      
-            //assertion - the answer is correct when this line is reached.
-            good_ans=true;
-            Points.point=Points.point+5;
-            System.out.println("Correct !\tScore :"+Points.point);
-        return nextEnigma();
-    }
-    */
+    
     /**
      * Same method as above except there is no while loop and it is for GUI
      * @return String
@@ -140,17 +114,19 @@ public class Level extends Questions
 
         //boolean good_ans=false;
         
-        if(solutions.get(player).equals(answer)){
+        if(solutions.get(player).equals(answer))
+        {
             //good_ans=true;
             Points.point=Points.point+5;
-            System.out.println("Correct !\tScore :"+Points.point);
-            return nextEnigma();
+            System.out.println(nextEnigma()+Points.point);
+            return nextEnigma()+Points.point;
+            
             
         }
         else{
-            System.out.println("Incorrect !\nTry again");
+            return("Incorrect !\nTry again");
         }
-        return "test";
+        
     }
 
     /**
@@ -164,8 +140,8 @@ public class Level extends Questions
             System.out.println("We're done here");
             System.exit(0);
         }
-        player++;
-        return playerAnswer();
+       
+        return questions.get(player++);
     }
 
 }

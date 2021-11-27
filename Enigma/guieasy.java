@@ -21,7 +21,7 @@ public class guieasy
     // variables d'instance - remplacez l'exemple qui suit par le vôtre
     //private static GUI2 gui2;
     private  Level level;
-    private Hint hint;
+    //private static Hint hint;
     
     private JButton enter;
     private JButton h;
@@ -49,7 +49,7 @@ public class guieasy
     {
         // initialisation des variables d'instance
         level=new Level();
-        hint=new Hint();
+        //hint=new Hint();
         
         field1 =new JTextField("",15);
         field2 =new JTextField("",15);
@@ -100,7 +100,7 @@ public class guieasy
                         // Supply a layout manager for the body of the content
                         frame.setLayout(new GridBagLayout());
                         GridBagConstraints gbc = new GridBagConstraints();
-                        gbc.gridwidth = GridBagConstraints.REMAINDER;
+                        gbc.gridwidth = GridBagConstraints.VERTICAL;
                         // Add stuff...
                         check.setFont(font);
                         frame.add(check,gbc);
@@ -114,28 +114,34 @@ public class guieasy
                         back.setFont(font);
                         frame.add(back,gbc);
 
-                        gbc.fill = GridBagConstraints.HORIZONTAL;
-                        gbc.gridx = 1;
-                        gbc.gridy = 1;
+                        gbc.fill = GridBagConstraints.RELATIVE;
+                        gbc.gridx = 3;
+                        gbc.gridy = 3;
                         pan.add(field1,gbc);
                         // gbc. fill=GridBagConstraints.HORIZONTAL;
                         // gbc.gridx=0;
                         // gbc.gridy=0;
                         pan.add(field2,gbc);
-                        // setJMenuBar(menubar);     
-                        
-
                         menubar.add(optionMenu);
 
                         optionMenu.add(quitItem);
                         frame.add(pan);
                         frame.add(menubar);
                         frame.setJMenuBar(menubar);
+                        JTextArea textArea = new JTextArea(
+                    Easy.choiceOfEnigma());
+                    Color color = new Color(255,255,255);
+                    textArea.setFont(new Font("Serif",Font.PLAIN, 20));
+                    textArea.setLineWrap(false);
+                    textArea.setWrapStyleWord(true);
+                    textArea.setOpaque(false);
+                    textArea.setEditable(false);
+                    textArea.setForeground(color);
+                    pan.add(textArea);
+                    frame.add(textArea,gbc);
 
                         frame.setLocationRelativeTo(null);
-                    }   catch (IOException exp) {
-                        exp.printStackTrace();
-                    }
+                   
                     
                     quitItem.addActionListener(new ActionListener(){
                             public void actionPerformed(ActionEvent e)
@@ -160,13 +166,15 @@ public class guieasy
                                 if(player<1)
                                {
                                     System.out.println("Enter a number between 1 and 10");
-                                   //enter.setVisible(true);
+                                    
+                                   
                                } 
                                else if(player>10){
                                     System.out.println("Enter a number between 1 and 10");
                                }
-                               else{      
-                                level.playerAnswer();                               
+                               else{     
+                                textArea.setVisible(false); 
+                                frame.add(new JTextArea(Level.playerAnswer()));                               
                                 h.setVisible(true);
                                 field2.setVisible(true);
                                 check.setVisible(true);
@@ -182,8 +190,8 @@ public class guieasy
                             public void actionPerformed(ActionEvent e)
                             {
                                 if (e.getSource()==h)
-                                    System.out.println(hint.hint());
-
+                                frame.add(new JTextArea(Hint.hint()));
+                                System.out.println(Hint.hint());
                             }
                         });
                         /**
@@ -201,16 +209,20 @@ public class guieasy
                          * This button is visible once the question comes up.
                          * It checks if the answer is good or not.
                          */
-                    check.addActionListener(new ActionListener(){
-                            public void actionPerformed(ActionEvent e){
+                    check.addActionListener(new ActionListener()
+                    {
+                            public void actionPerformed(ActionEvent e)
+                            {
                                 
                                 if(e.getSource()==check) 
                                     answer=field2.getText().toLowerCase();
                                     
                                 level.good();
-
                             }
                         });
+                    }   catch (IOException exp) {
+                        exp.printStackTrace();
+                    }
                 }
             });   
         frame.setContentPane(pan);

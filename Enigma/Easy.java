@@ -7,7 +7,7 @@ package Enigma;
     * @version (a version number 21/11/2018)
     */
     public class Easy {
-        private String e;
+        private static String e;
         
         public Easy(){
          choiceOfEnigma();
@@ -18,8 +18,8 @@ package Enigma;
          * @aram no parameter
         * @return no return 
          */
-        public String choiceOfEnigma(){
-           e="Choose your enigma (number) : \n1:Standford\n2:Letter\n3:Ducks\n4:Prescription\n5:Lil Brother\n6:Number9\n7:The_Room\n8:Apple tree\n9:Birds\n10:Deluge\nEasy >";
+        public static String choiceOfEnigma(){
+           e="Choose your enigma (number) : \n1:Standford\n2:Letter\n3:Ducks\n4:Prescription\n5:Lil Brother\n6:Number9\n7:The_Room\n8:Apple tree\n9:Birds\n10:Deluge";
            return e;
         }
         

@@ -10,7 +10,7 @@ import java.util.*;
 public  class Questions extends Solutions 
 {
     // variables d'instance - remplacez l'exemple qui suit par le vôtre
-    public LinkedHashMap <Integer, String>questions;
+    public static LinkedHashMap <Integer, String>questions;
 
     /**
      * The constructor initializes the Hashmap questions

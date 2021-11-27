@@ -11,7 +11,7 @@ public class Hint
 {
     // variables d'instance - remplacez l'exemple qui suit par le vôtre
     
-    public  LinkedHashMap <Integer,String> hint;
+    public static  LinkedHashMap <Integer,String> hint;
     /**
      * The constructor initializes the Hashmap Hint
      */
@@ -65,7 +65,7 @@ public class Hint
         hint.put(29,"You use it everyday(I hope so)");
         hint.put(30,"The answer is neutral.");
     }
-    public String hint()
+    public static String hint()
     {
        if(hint.containsKey(Level.player)){
            return hint.get(Level.player);}

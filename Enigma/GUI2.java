@@ -48,7 +48,7 @@ public class GUI2 {
         hard=new JButton("HARD");
         font=new Font("serif",Font.PLAIN,20);
         
-        JFrame frame=new JFrame("deuxieme frame");
+        JFrame frame=new JFrame("Enigma");
         JPanel panel=new JPanel();
         panel.setLayout(new FlowLayout());
         JLabel label=new JLabel();
@@ -126,9 +126,7 @@ public class GUI2 {
                 {
                     public void actionPerformed(ActionEvent e)
                     {
-                        System.out.println(Easy.choiceOfEnigma());
-                        
-                        frame.setVisible(false);
+                       frame.setVisible(false);
                        new guieasy();
                         
                     }

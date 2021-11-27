@@ -7,9 +7,10 @@ import javax.swing.*;
 import java.io.*;
 import javax.imageio.ImageIO;
 
+@SuppressWarnings("serial")
 public class GUI extends JFrame {
-    
-    public static Main m1;
+
+	public static Main m1;
    // private static GUI2 gui2;
    // private static Level level;
     
@@ -20,6 +21,7 @@ public class GUI extends JFrame {
     private JFrame frame;
     private JMenuItem quitItem;
     private Font font;
+    
     
     private BufferedImage forest;
     
@@ -38,21 +40,17 @@ private GUI()
     
     //level=new Level();
     m1=new Main();
-   // gui2=new GUI2();
-    
+   // gui2=new GUI2();   
     pan=new JPanel();
-    
     font=new Font("serif",Font.PLAIN,20);
-   
     optionMenu = new JMenu("Option");
     menubar = new JMenuBar();
     quitItem = new JMenuItem("Quit");
-
     play=new JButton("PLAY");
-    
     frame= new JFrame("Enigma");
+    
     String dark_forest="img/dark_forest.png";
-   
+    
     
         EventQueue.invokeLater(new Runnable()
         {
@@ -85,16 +83,22 @@ private GUI()
                         GridBagConstraints gbc = new GridBagConstraints();
                         gbc.gridwidth = GridBagConstraints.REMAINDER;
                         // Add stuff...
-
+                        
                         play.setFont(font);
                         frame.add(play, gbc);
-
-                        //frame.add(new JLabel(m1.intro()),gbc);
-                        System.out.println(m1.intro());
-
-                        //setJMenuBar(menubar);     
-                        // create the File menu
-                        
+                       
+                        JTextArea textArea = new JTextArea(
+                            m1.intro());
+                    Color color = new Color(255,255,255);
+                    textArea.setFont(new Font("Serif",Font.PLAIN, 16));
+                    textArea.setLineWrap(false);
+                    textArea.setWrapStyleWord(true);
+                    textArea.setOpaque(false);
+                    textArea.setEditable(false);
+                    textArea.setForeground(color);
+                    pan.add(textArea);
+                    frame.add(textArea,gbc);
+                       
                         menubar.add(optionMenu);
 
                         optionMenu.add(quitItem);

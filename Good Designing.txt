@@ -1,0 +1,9 @@
+DESIGN PRINCIPLES
+
+dOCUMENTATION:comments,@return,@param,...
+high cohesion:class does 1 thing well
+low coupling :dependency between classes
+smaller methods:avoid repeating source code
+sensible variable names
+private/public balance
+expandability

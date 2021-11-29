@@ -118,11 +118,14 @@ public class Level extends Questions
         {
             Points.point=Points.point+5;
             System.out.println("Correct\nScore: "+Points.point);
+            guieasy.question.setVisible(false);
+            //guimed.question.setVisible(false);
+            //guihard.question.setVisible(false);
             return nextEnigma()+"\nScore : "+Points.point;                        
         }
         else{
             System.out.println("Incorrect !\nTry again");
-            return("Incorrect !\nTry again");
+            return null;
         }        
     }
    
@@ -132,7 +135,7 @@ public class Level extends Questions
      *@param no parameter
      *@return returns the next question
      */
-    public static String nextEnigma(){
+    public String nextEnigma(){
         System.out.println("Next enigma :");
         if(player>=30){
             System.out.println("We're done here");

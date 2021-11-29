@@ -90,7 +90,7 @@ private GUI()
                         JTextArea textArea = new JTextArea(
                             m1.intro());
                     Color color = new Color(255,255,255);
-                    textArea.setFont(new Font("Serif",Font.PLAIN, 16));
+                    textArea.setFont(new Font("Serif",Font.PLAIN, 20));
                     textArea.setLineWrap(false);
                     textArea.setWrapStyleWord(true);
                     textArea.setOpaque(false);

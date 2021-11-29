@@ -36,7 +36,7 @@ public class guieasy
     private JMenuItem quitItem;
     
     final JTextField field1,field2;
-    JTextArea question;
+    static JTextArea question;
     JTextArea nextQuestion;
     private Font font;
     
@@ -229,16 +229,20 @@ public class guieasy
                             public void actionPerformed(ActionEvent e)
                             {
                                 
-                                if(e.getSource()==check) 
+                                if(e.getSource()==check) {
                                     answer=field2.getText().toLowerCase();
-                                question.setVisible(false); 
+                                   
+                                }
+                                 
                                 nextQuestion=new JTextArea(level.good());
+
                                 nextQuestion.setFont(new Font("Serif",Font.PLAIN, 20));
                                 nextQuestion.setLineWrap(false);
                                 nextQuestion.setWrapStyleWord(true);
                                 nextQuestion.setOpaque(false);
                                 nextQuestion.setEditable(false);
-                                nextQuestion.setForeground(color);                                
+                                nextQuestion.setForeground(color);  
+                                //question.replaceRange(nextQuestion.toString(),0,nextQuestion.toString().length());                              
                                 frame.add(nextQuestion,gbc);
 
                             }

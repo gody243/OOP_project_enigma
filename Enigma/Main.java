@@ -33,7 +33,7 @@ public class Main {
 
     public String intro(){
     String intro="Hello Godefroy let's debug that and make this game work !\nIn this game you'll have to solve my riddles.\nThere are 3 levels and 10 questions in each of them."
-    +"Try to solve all my riddles and\n you'll be the Great Master!!\nClick on PLAY !";
+    +"Try to solve all my riddles and\nyou'll be the Great Master!!\nClick on PLAY !";
     return intro;
     }
    

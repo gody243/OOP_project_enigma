@@ -1,5 +1,6 @@
 package Enigma;
 
+
 import java.util.*;
 /**
  * The Level class has a role of mediator between the Main class and the level classes
@@ -91,16 +92,16 @@ public class Level extends Questions
     /**
      *When the choice of enigma is made, this method shows the question that the player wants to answer to 
      *@param no parameter
-     *@return string
+     *@return the question
      */
 
     public static String playerAnswer()
     {
         if(questions.containsKey(player)){
             System.out.println(questions.get(player));
-            return(questions.get(player));
-        }
-        
+            return questions.get(player); 
+                    
+        }        
         else{
             return("This is not a valid number!");
         }
@@ -112,31 +113,26 @@ public class Level extends Questions
      * @return String
      */
     public String good(){
-
-        //boolean good_ans=false;
         
         if(solutions.get(player).equals(answer))
         {
-            //good_ans=true;
             Points.point=Points.point+5;
-            System.out.println("Correct\n"+Points.point+" points !");
-            return nextEnigma()+Points.point;
-            
-            
+            System.out.println("Correct\nScore: "+Points.point);
+            return nextEnigma()+"\nScore : "+Points.point;                        
         }
         else{
             System.out.println("Incorrect !\nTry again");
             return("Incorrect !\nTry again");
-        }
-        
+        }        
     }
+   
 
     /**
      * After a good answer, the next question comes up automatically
      *@param no parameter
-     *@return no return 
+     *@return returns the next question
      */
-    private String nextEnigma(){
+    public static String nextEnigma(){
         System.out.println("Next enigma :");
         if(player>=30){
             System.out.println("We're done here");

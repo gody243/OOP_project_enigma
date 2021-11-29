@@ -27,7 +27,7 @@ public class Solutions
     }
 
     /**
-     * Un exemple de méthode - remplacez ce commentaire par le vôtre
+     * answers of each question classified
      *
      * @param  y   le paramètre de la méthode
      * @return     la somme de x et de y

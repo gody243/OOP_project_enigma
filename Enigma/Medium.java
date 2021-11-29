@@ -22,7 +22,7 @@ public class Medium
      * @return no return 
      */
     public String choiceOfEnigma(){
-        String m ="Choose your enigma (number) : \n11:Hens\n12:Sphinx\n13:Logic\n14:Missing Numbers\n15:Cats\n16:Savant Calcul\n17:Ehhh\n18:Portrait\n19:Long\n20:Hello\nMedium >";
+        String m ="Choose your enigma (number) : \n11:Hens\n12:Sphinx\n13:Logic\n14:Missing Numbers\n15:Cats\n16:Savant Calcul\n17:Ehhh\n18:Portrait\n19:Long\n20:Hello";
 
         return m;
     }

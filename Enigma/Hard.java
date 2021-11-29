@@ -19,7 +19,7 @@ public class Hard
      * @return no return 
      */  
     public String choiceOfEnigma(){
-        String h="Choose your enigma (number) : \n21:Divide\n22:Einstein enigma\n23:Sticks\n24:Bags\n25:Sommelier\n26:The Painting\n27:Between 2\n28:Towel\n29:Teeth\n30:From nothing:\nHard >";
+        String h="Choose your enigma (number) : \n21:Divide\n22:Einstein enigma\n23:Sticks\n24:Bags\n25:Sommelier\n26:The Painting\n27:Between 2\n28:Towel\n29:Teeth\n30:From nothing";
 
         return h;
     }

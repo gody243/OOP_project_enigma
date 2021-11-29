@@ -36,7 +36,8 @@ public class guieasy
     private JMenuItem quitItem;
     
     final JTextField field1,field2;
-    
+    JTextArea question;
+    JTextArea nextQuestion;
     private Font font;
     
     private JFrame frame;
@@ -129,9 +130,11 @@ public class guieasy
                         frame.add(pan);
                         frame.add(menubar);
                         frame.setJMenuBar(menubar);
+                        Color color = new Color(255,255,255);
+                        
                         JTextArea textArea = new JTextArea(
                     Easy.choiceOfEnigma());
-                    Color color = new Color(255,255,255);
+                    
                     textArea.setFont(new Font("Serif",Font.PLAIN, 20));
                     textArea.setLineWrap(false);
                     textArea.setWrapStyleWord(true);
@@ -158,6 +161,7 @@ public class guieasy
                         /**
                          * Press enter after typing the number in the text field.
                          */
+                    
                     enter.addActionListener(new ActionListener()
                     {
                             public void actionPerformed(ActionEvent e)
@@ -174,9 +178,17 @@ public class guieasy
                                     System.out.println("Enter a number between 1 and 10");
                                }
                                else{     
-                                textArea.setVisible(false); 
-                                frame.add(new JTextArea(Level.playerAnswer()),gbc);  
-                                //Level.playerAnswer();                             
+                                textArea.setVisible(false);
+                                question= new JTextArea(Level.playerAnswer());
+                                question.setFont(new Font("Serif",Font.PLAIN, 20));
+                                question.setLineWrap(false);
+                                question.setWrapStyleWord(true);
+                                question.setOpaque(false);
+                                question.setEditable(false);
+                                question.setForeground(color);
+                                
+                                frame.add(question,gbc);  
+                                                             
                                 h.setVisible(true);
                                 field2.setVisible(true);
                                 check.setVisible(true);
@@ -192,7 +204,7 @@ public class guieasy
                             public void actionPerformed(ActionEvent e)
                             {
                                 if (e.getSource()==h)
-                                frame.add(new JTextArea(Hint.hint()));
+                                frame.add(new JTextArea(Hint.hint()),gbc);
                                 System.out.println(Hint.hint());
                             }
                         });
@@ -202,6 +214,7 @@ public class guieasy
                     back.addActionListener(new ActionListener(){
                             public void actionPerformed(ActionEvent e)
                             {
+                                Points.point=0;
                                 GUI2.jeu();
                                 frame.setVisible(false);
                                 
@@ -218,8 +231,16 @@ public class guieasy
                                 
                                 if(e.getSource()==check) 
                                     answer=field2.getText().toLowerCase();
-                                    
-                                level.good();
+                                question.setVisible(false); 
+                                nextQuestion=new JTextArea(level.good());
+                                nextQuestion.setFont(new Font("Serif",Font.PLAIN, 20));
+                                nextQuestion.setLineWrap(false);
+                                nextQuestion.setWrapStyleWord(true);
+                                nextQuestion.setOpaque(false);
+                                nextQuestion.setEditable(false);
+                                nextQuestion.setForeground(color);                                
+                                frame.add(nextQuestion,gbc);
+
                             }
                         });
                     }   catch (IOException exp) {

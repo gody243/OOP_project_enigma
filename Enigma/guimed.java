@@ -135,7 +135,7 @@ public class guimed
                             public void actionPerformed(ActionEvent e)
                             {
                                 if(e.getSource()==quitItem){
-                                    System.out.println("Thank you for playing.  Good bye.");
+                                    System.out.println("Thank you for playing. Good bye.");
                                     System.exit(0);}
                             }
                         });

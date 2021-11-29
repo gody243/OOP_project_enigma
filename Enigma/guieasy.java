@@ -100,7 +100,7 @@ public class guieasy
                         // Supply a layout manager for the body of the content
                         frame.setLayout(new GridBagLayout());
                         GridBagConstraints gbc = new GridBagConstraints();
-                        gbc.gridwidth = GridBagConstraints.VERTICAL;
+                        gbc.gridwidth = GridBagConstraints.SOUTH;
                         // Add stuff...
                         check.setFont(font);
                         frame.add(check,gbc);
@@ -115,13 +115,14 @@ public class guieasy
                         frame.add(back,gbc);
 
                         gbc.fill = GridBagConstraints.RELATIVE;
-                        gbc.gridx = 3;
-                        gbc.gridy = 3;
+                        gbc.gridx = 1;
+                        gbc.gridy = 2;
                         pan.add(field1,gbc);
                         // gbc. fill=GridBagConstraints.HORIZONTAL;
                         // gbc.gridx=0;
                         // gbc.gridy=0;
                         pan.add(field2,gbc);
+                        //frame.add(field2,gbc);
                         menubar.add(optionMenu);
 
                         optionMenu.add(quitItem);
@@ -174,7 +175,8 @@ public class guieasy
                                }
                                else{     
                                 textArea.setVisible(false); 
-                                frame.add(new JTextArea(Level.playerAnswer()));                               
+                                frame.add(new JTextArea(Level.playerAnswer()),gbc);  
+                                //Level.playerAnswer();                             
                                 h.setVisible(true);
                                 field2.setVisible(true);
                                 check.setVisible(true);

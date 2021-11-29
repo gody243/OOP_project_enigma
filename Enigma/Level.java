@@ -97,6 +97,7 @@ public class Level extends Questions
     public static String playerAnswer()
     {
         if(questions.containsKey(player)){
+            System.out.println(questions.get(player));
             return(questions.get(player));
         }
         
@@ -118,12 +119,13 @@ public class Level extends Questions
         {
             //good_ans=true;
             Points.point=Points.point+5;
-            System.out.println(nextEnigma()+Points.point);
+            System.out.println("Correct\n"+Points.point+" points !");
             return nextEnigma()+Points.point;
             
             
         }
         else{
+            System.out.println("Incorrect !\nTry again");
             return("Incorrect !\nTry again");
         }
         
@@ -140,8 +142,9 @@ public class Level extends Questions
             System.out.println("We're done here");
             System.exit(0);
         }
-       
-        return questions.get(player++);
+        player++;
+        System.out.println(questions.get(player));
+        return questions.get(player);
     }
 
 }

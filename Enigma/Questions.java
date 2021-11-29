@@ -37,16 +37,16 @@ public  class Questions extends Solutions
         questions.put(1,"What's greater than GOD, \nMore evil than the devil,\nThe poor have it,\nThe rich need it,\nAnd if you eat it, you'll die");
         questions.put(2,"What's the following letter:\nj-f-m-a-m-j-j-?");
         questions.put(3,"2 ducks are in front of 1 duck,\n2 ducks are behind 1 duck and\n1 duck is in the middle.\nHow many ducks are there?");
-        questions.put(4,"Your doctor gave you a treatment of 3 capsules.You have to take one every half hours.\nWhat is the duration of the treatment(in minutes)?");
-        questions.put(5,"David is 10 years old,his little brother Franck is half his age.\nWhen David is going to be 10 times more aged,what will be the age of Franck?");
-        questions.put(6,"How many times do we find the number 9 in the series of numbers from 1 to 100?");
-        questions.put(7,"In a square room,the walls,the ceiling and the floor are huge mirrors.\nIf you were in that room, how many reflects of yourself would you see ?");
-        questions.put(8,"An apple tree has 9 principal branches.\nOn each principal branch there are 9 important branches."
-            +"\nOn each important branch there are 9 normal branches.\nOn each normal branch there are 9 little branches."
-            +"\nOn each little branch there are 9 very little branches.\nOn each very little branch there are minuscule branches."
-            +"\nOn each minuscule branch there are 9 fruits.\n\nHow many cherries are there in total?");
-        questions.put(9,"10 birds are on a tree\nA hunter comes up and shoot with his rifle on one and kills him.\nHow many birds are left on the tree ?");
-        questions.put(10,"How many animals of each species did Moses take with him on his arck ?");
+        questions.put(4,"Your doctor gave you a treatment\nof 3 capsules.\nYou have to take one every half hours.\nWhat is the duration of\nthe treatment(in minutes)?");
+        questions.put(5,"David is 10 years old,\nhis little brother Franck is half his age.\nWhen David is going to be 10 times more aged,\nWhat will be the age of Franck?");
+        questions.put(6,"How many times\ndo we find the number 9\nin the series of numbers from 1 to 100?");
+        questions.put(7,"In a square room,the walls,\nthe ceiling and the floor are huge mirrors.\nIf you were in that room,\nHow many reflects of yourself would you see ?");
+        questions.put(8,"An apple tree has 9 principal branches.\nOn each principal branch\nthere are 9 important branches."
+            +"\nOn each important branch\nthere are 9 normal branches.\nOn each normal branch\nthere are 9 little branches."
+            +"\nOn each little branch\nthere are 9 very little branches.\nOn each very little branch\nthere are minuscule branches."
+            +"\nOn each minuscule branch\nthere are 9 fruits.\nHow many cherries are there in total?");
+        questions.put(9,"10 birds are on a tree\nA hunter comes up and shoot with his\nrifle on one and kills him.\nHow many birds are left on the tree ?");
+        questions.put(10,"How many animals of each species did\nMoses take with him on his arck ?");
 
     }
 

@@ -29,24 +29,11 @@ public class Main {
      *@param no parameter
      *@return no return
      */ 
-    /**   
-    private void Start(){
-      
-       System.out.print("Name : ");
-       name=sc.next();
-       System.out.println("Hello "+name+" and welcome to The Enigma!");
-       System.out.println("In this game you'll have to solve my riddles.");
-       System.out.println("There are 3 levels and 10 questions in each of them");
-       System.out.println("Try to solve all my enigmas and you'll be the Great Master !!");
-      
-       System.out.println("GOOD LUCK!\n");
-       currentLevel.level();
-    }
-    */
+  
 
     public String intro(){
-    String intro="Hello Godefroy let's debug that and make this game work'!\nIn this game you'll have to solve my riddles.\nThere are 3 levels and 10 questions in each of them."
-    +"Try to solve all my riddles and you'll be the Great Master!!\nClick on PLAY !";
+    String intro="Hello Godefroy let's debug that and make this game work !\nIn this game you'll have to solve my riddles.\nThere are 3 levels and 10 questions in each of them."
+    +"Try to solve all my riddles and\n you'll be the Great Master!!\nClick on PLAY !";
     return intro;
     }
    

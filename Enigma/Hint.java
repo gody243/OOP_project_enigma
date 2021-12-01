@@ -41,7 +41,7 @@ public class Hint
     {
         
         hint.put(11,"Half less of hens for half less time.");
-        hint.put(12,"Growing old might vary some data.");
+        hint.put(12,"Growing old may vary some data.");
         hint.put(13,"You should distinctly read the numbers.");
         hint.put(14,"Search for all the paths.");
         hint.put(15,"Not that many.");

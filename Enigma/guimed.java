@@ -1,5 +1,6 @@
 
 package Enigma;
+
 import java.awt.*;
 import java.awt.event.*;
 import java.awt.image.*;
@@ -7,6 +8,7 @@ import java.io.*;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
+import static Enigma.Level.answer;
 import static Enigma.Level.player;
 /**
  * Décrivez votre classe guimed ici.
@@ -17,8 +19,8 @@ import static Enigma.Level.player;
 public class guimed
 {
     // variables d'instance - remplacez l'exemple qui suit par le vôtre
-    private static Level l;
-    private Hint hint;
+    
+    
     
     private JButton enter;
     private JButton h;
@@ -27,10 +29,10 @@ public class guimed
     
     private JPanel pan;
     
-    
+    static JLabel label,hint,question;
     private final JTextField field1,text2;
     
-    
+    private Level level;
     private Font font;
     
     private JMenu optionMenu;
@@ -42,9 +44,9 @@ public class guimed
     private BufferedImage darkmed;
 
     public guimed(){
-        l=new Level();
-        hint=new Hint();
         
+        
+        level =new Level();
         field1 =new JTextField("",15);
         text2=new JTextField(15);
         
@@ -56,7 +58,8 @@ public class guimed
         pan=new JPanel(new GridBagLayout());
        
         font=new Font("serif",Font.PLAIN,20);
-        
+        hint=new JLabel("hint",JLabel.HORIZONTAL);
+        label = new JLabel("This is a Swing frame",JLabel.HORIZONTAL);
         menubar=new JMenuBar();
         quitItem = new JMenuItem("Quit");
         optionMenu = new JMenu("Option");
@@ -96,20 +99,21 @@ public class guimed
                         // Supply a layout manager for the body of the content
                         frame.setLayout(new GridBagLayout());
                         GridBagConstraints gbc = new GridBagConstraints();
-                        gbc.gridwidth = GridBagConstraints.REMAINDER;
+                        gbc.gridwidth = GridBagConstraints.BELOW_BASELINE;
                         // Add stuff...
                         check.setFont(font);
                         frame.add(check,gbc);
-                        h.setFont(font); h.setVisible(false);
+                        h.setFont(font); 
+                        h.setVisible(false);
                         frame.add(h,gbc);
 
                         enter.setFont(font);
                         frame.add(enter,gbc);
                         back.setFont(font);
                         frame.add(back,gbc);
-                        gbc.fill = GridBagConstraints.HORIZONTAL;
+                        gbc.fill = GridBagConstraints.RELATIVE;
                         gbc.gridx = 1;
-                        gbc.gridy = 1;
+                        gbc.gridy = 2;
                         // gbc. fill=GridBagConstraints.HORIZONTAL;
                         // gbc.gridx=0;
                         // gbc.gridy=0;
@@ -125,11 +129,20 @@ public class guimed
                         frame.add(pan);
                         frame.add(menubar);
                         frame.setJMenuBar(menubar);
-
+                        Color color = new Color(255,255,255);
+                        JTextArea textArea = new JTextArea(
+                    Medium.choiceOfEnigma());
+                    
+                    textArea.setFont(new Font("Serif",Font.PLAIN, 20));
+                    textArea.setLineWrap(false);
+                    textArea.setWrapStyleWord(true);
+                    textArea.setOpaque(false);
+                    textArea.setEditable(false);
+                    textArea.setForeground(color);
+                    pan.add(textArea);
+                    frame.add(textArea,gbc);
                         frame.setLocationRelativeTo(null);
-                    }   catch (IOException exp) {
-                        exp.printStackTrace();
-                    }
+                
 
                     quitItem.addActionListener(new ActionListener(){
                             public void actionPerformed(ActionEvent e)
@@ -140,7 +153,8 @@ public class guimed
                             }
                         });
 
-                    enter.addActionListener(new ActionListener(){
+                    enter.addActionListener(new ActionListener()
+                    {
                             public void actionPerformed(ActionEvent e)
                             {
                                    player = Integer.parseInt(field1.getText());
@@ -153,14 +167,21 @@ public class guimed
                                 else if(player>20){
                                     System.out.println("Enter a number between 11 and 20 !");
                                 }
-                                 else{                      
-                                l.playerAnswer();                               
-                                h.setVisible(true);
-                                text2.setVisible(true);
-                                check.setVisible(true);
-                                enter.setVisible(false);
-                                field1.setVisible(false);
-                            }
+                                 else{ 
+                                    textArea.setVisible(false);                     
+                                    question= new JLabel(Level.playerAnswer());
+                                    question.setFont(new Font("Serif",Font.PLAIN, 20)); 
+                                    question.setOpaque(false);
+                                    question.setForeground(color);
+                                    question.setText("<html><div style=\"width:300px;height:300px;\">"+Level.playerAnswer()+"</div></html>");
+                                    frame.add(question,gbc);  
+
+                                    h.setVisible(true);
+                                    text2.setVisible(true);
+                                    check.setVisible(true);
+                                    enter.setVisible(false);
+                                    field1.setVisible(false);
+                                }
                             }
                         });
 
@@ -168,7 +189,11 @@ public class guimed
                             public void actionPerformed(ActionEvent e)
                             {
                                 if(e.getSource()==h)
-                                    System.out.println(hint.hint());
+                                    System.out.println(Hint.hint());
+                                    hint.setText("<html><div style=\"width:100px;height:0px;\">"+Hint.hint()+"</div></html>");   
+                                    hint.setFont(new Font("Serif",Font.PLAIN, 20));
+                                    hint.setForeground(color);
+                                    frame.add(hint,gbc);
 
                             }
                         });
@@ -185,12 +210,19 @@ public class guimed
 
                                 if(e.getSource()==check) {
 
-                                    Level.answer=text2.getText().toLowerCase();
-                                    l.good();
+                                    answer=text2.getText().toLowerCase();
+                                    
                                 }
+                                label.setText("<html><div style=\"width:200px;height:300px;\">"+level.good()+"</div></html>");  
+                                label.setFont(new Font("Serif",Font.PLAIN, 20));
+                                label.setForeground(color);
+                                frame.add(label,gbc); 
                             }
 
                         });
+                    }   catch (IOException exp) {
+                        exp.printStackTrace();
+                    }
 
                 }
             });    

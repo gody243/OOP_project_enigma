@@ -118,8 +118,8 @@ public class Level extends Questions
         {
             Points.point=Points.point+5;
             System.out.println("Correct\nScore: "+Points.point);
-            guieasy.question.setVisible(false);
-            //guimed.question.setVisible(false);
+            //guieasy.question.setVisible(false);
+            guimed.question.setVisible(false);
             //guihard.question.setVisible(false);
             return nextEnigma()+"\nScore : "+Points.point;                        
         }

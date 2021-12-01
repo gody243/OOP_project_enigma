@@ -108,7 +108,7 @@ public class guieasy
                         frame.add(check,gbc);
                         h.setFont(font);
                         frame.add(h,gbc);
-                        //h.setEnabled(false);
+                       
                         enter.setFont(font);
 
                         //pan.add(field1,gbc);
@@ -186,10 +186,7 @@ public class guieasy
                                 question.setForeground(color);
                                 question.setText("<html><div style=\"width:300px;height:450px;\">"+Level.playerAnswer()+"</div></html>");
                                 frame.add(question,gbc);  
-                                
-
-                               
-                                                           
+                                                          
                                 h.setVisible(true);
                                 field2.setVisible(true);
                                 check.setVisible(true);

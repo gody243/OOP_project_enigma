@@ -126,7 +126,7 @@ public class Level extends Questions
         else{
             System.out.println("Incorrect !\nTry again");
             
-            return "Incorrect ! Try again";
+            return "Incorrect ! Try again "+questions.get(player)+" Score : "+Points.point ;
         }        
     }
    

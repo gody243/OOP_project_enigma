@@ -30,14 +30,15 @@ public class guieasy
    
     
     private JPanel pan;
-    static JLabel label; 
+    static JLabel label,hint,question;
+   
     private JMenu optionMenu;
     private JMenuBar menubar ;
     private JMenuItem quitItem;
     
     final JTextField field1,field2;
-    static JTextArea question;
-    JTextArea nextQuestion;
+   
+    
     private Font font;
     
     private JFrame frame;
@@ -59,7 +60,7 @@ public class guieasy
         back=new JButton("BACK"); 
         h=new JButton("HINT");
         check=new JButton("CHECK");
-        h=new JButton("HINT");
+        hint=new JLabel("hint",JLabel.HORIZONTAL);
         label = new JLabel("This is a Swing frame",JLabel.HORIZONTAL);
         pan=new JPanel(new GridBagLayout());
         
@@ -101,7 +102,7 @@ public class guieasy
                         // Supply a layout manager for the body of the content
                         frame.setLayout(new GridBagLayout());
                         GridBagConstraints gbc = new GridBagConstraints();
-                        gbc.gridwidth = GridBagConstraints.SOUTH;
+                        gbc.gridwidth = GridBagConstraints.BELOW_BASELINE;
                         // Add stuff...
                         check.setFont(font);
                         frame.add(check,gbc);
@@ -179,14 +180,11 @@ public class guieasy
                                }
                                else{     
                                 textArea.setVisible(false);
-                                question= new JTextArea(Level.playerAnswer());
-                                question.setFont(new Font("Serif",Font.PLAIN, 20));
-                                question.setLineWrap(false);
-                                question.setWrapStyleWord(true);
+                                question= new JLabel(Level.playerAnswer());
+                                question.setFont(new Font("Serif",Font.PLAIN, 20)); 
                                 question.setOpaque(false);
-                                question.setEditable(false);
                                 question.setForeground(color);
-                                
+                                question.setText("<html><div style=\"width:300px;height:450px;\">"+Level.playerAnswer()+"</div></html>");
                                 frame.add(question,gbc);  
                                 
 
@@ -206,10 +204,17 @@ public class guieasy
                     h.addActionListener(new ActionListener(){
                             public void actionPerformed(ActionEvent e)
                             {
-                                if (e.getSource()==h)
-                                //frame.add(new JTextArea(Hint.hint()),gbc);
+                                if (e.getSource()==h){
                                 System.out.println(Hint.hint());
+                                 hint.setText("<html><div style=\"width:100px;height:0px;\">"+Hint.hint()+"</div></html>");   
+                                 hint.setFont(new Font("Serif",Font.PLAIN, 20));
+                                 hint.setForeground(color);
+                                 frame.add(hint,gbc);
+                                }
+                                
                             }
+                             
+
                         });
                         /**
                          * You go back to the choice of level.
@@ -230,19 +235,15 @@ public class guieasy
                     check.addActionListener(new ActionListener()
                     {
                             public void actionPerformed(ActionEvent e)
-                            {
-                                
+                            { 
                                 if(e.getSource()==check) {
                                     answer=field2.getText().toLowerCase();
                                    
                                 }                                 
-                                
-                                label.setText("<html><div style=\"width:200px\";>"+level.good()+"</div></html>");  // Look familiar?  <----------
+                                label.setText("<html><div style=\"width:200px;height:450px;\">"+level.good()+"</div></html>");  
                                 label.setFont(new Font("Serif",Font.PLAIN, 20));
                                 label.setForeground(color);
-                                
                                 frame.add(label,gbc); 
-
                             }
                         });
                     }   catch (IOException exp) {

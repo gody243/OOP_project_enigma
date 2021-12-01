@@ -125,7 +125,8 @@ public class Level extends Questions
         }
         else{
             System.out.println("Incorrect !\nTry again");
-            return null;
+            
+            return "Incorrect ! Try again";
         }        
     }
    

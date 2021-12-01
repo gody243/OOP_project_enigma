@@ -30,7 +30,7 @@ public class guieasy
    
     
     private JPanel pan;
-    
+    static JLabel label; 
     private JMenu optionMenu;
     private JMenuBar menubar ;
     private JMenuItem quitItem;
@@ -60,7 +60,7 @@ public class guieasy
         h=new JButton("HINT");
         check=new JButton("CHECK");
         h=new JButton("HINT");
-        
+        label = new JLabel("This is a Swing frame",JLabel.HORIZONTAL);
         pan=new JPanel(new GridBagLayout());
         
         menubar=new JMenuBar(); 
@@ -188,7 +188,10 @@ public class guieasy
                                 question.setForeground(color);
                                 
                                 frame.add(question,gbc);  
-                                                             
+                                
+
+                               
+                                                           
                                 h.setVisible(true);
                                 field2.setVisible(true);
                                 check.setVisible(true);
@@ -204,7 +207,7 @@ public class guieasy
                             public void actionPerformed(ActionEvent e)
                             {
                                 if (e.getSource()==h)
-                                frame.add(new JTextArea(Hint.hint()),gbc);
+                                //frame.add(new JTextArea(Hint.hint()),gbc);
                                 System.out.println(Hint.hint());
                             }
                         });
@@ -232,18 +235,13 @@ public class guieasy
                                 if(e.getSource()==check) {
                                     answer=field2.getText().toLowerCase();
                                    
-                                }
-                                 
-                                nextQuestion=new JTextArea(level.good());
-
-                                nextQuestion.setFont(new Font("Serif",Font.PLAIN, 20));
-                                nextQuestion.setLineWrap(false);
-                                nextQuestion.setWrapStyleWord(true);
-                                nextQuestion.setOpaque(false);
-                                nextQuestion.setEditable(false);
-                                nextQuestion.setForeground(color);  
-                                //question.replaceRange(nextQuestion.toString(),0,nextQuestion.toString().length());                              
-                                frame.add(nextQuestion,gbc);
+                                }                                 
+                                
+                                label.setText("<html><div style=\"width:200px\";>"+level.good()+"</div></html>");  // Look familiar?  <----------
+                                label.setFont(new Font("Serif",Font.PLAIN, 20));
+                                label.setForeground(color);
+                                
+                                frame.add(label,gbc); 
 
                             }
                         });

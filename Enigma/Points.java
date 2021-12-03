@@ -1,6 +1,5 @@
 package Enigma;
 
-
 /**
  * This point of the player.
  *
@@ -8,10 +7,9 @@ package Enigma;
  * @version (16/01/2019)
  */
 
-public class Points
-{
-    
+public class Points {
+
     // variables d'instance - remplacez l'exemple qui suit par le vôtre
-    public static int point=0;
+    public static int point = 0;
 
 }

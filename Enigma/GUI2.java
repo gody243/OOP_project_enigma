@@ -1,4 +1,5 @@
 package Enigma;
+
 import java.awt.*;
 import java.awt.image.*;
 import java.awt.event.*;
@@ -12,7 +13,6 @@ import javax.imageio.ImageIO;
  * @author (205229)
  * @version (16/01/2019)
  **/
-    
 
 public class GUI2 {
 
@@ -29,139 +29,122 @@ public class GUI2 {
     private static JButton medium;
     private static JButton hard;
 
-    private static JMenuBar menubar ;
+    private static JMenuBar menubar;
 
     private static JMenu optionMenu;
     private static Font font;
 
     private static JMenuItem quitItem;
-       
-    
-    private GUI2(){
-  
-        Medium=new Medium();
-        Hard=new Hard();
-        Easy=new Easy();
 
-        easy=new JButton("EASY");
-        medium=new JButton("MEDIUM");
-        hard=new JButton("HARD");
-        font=new Font("serif",Font.PLAIN,20);
-        
-        JFrame frame=new JFrame("Enigma");
-        JPanel panel=new JPanel();
+    private GUI2() {
+
+        Medium = new Medium();
+        Hard = new Hard();
+        Easy = new Easy();
+
+        easy = new JButton("EASY");
+        medium = new JButton("MEDIUM");
+        hard = new JButton("HARD");
+        font = new Font("serif", Font.PLAIN, 20);
+
+        JFrame frame = new JFrame("Enigma");
+        JPanel panel = new JPanel();
         panel.setLayout(new FlowLayout());
-        JLabel label=new JLabel();
+        JLabel label = new JLabel();
 
         menubar = new JMenuBar();
         quitItem = new JMenuItem("Quit");
         optionMenu = new JMenu("Option");
-        String imgstreet="img/dark-street.jpeg";
+        String imgstreet = "img/dark-street.jpeg";
 
-        EventQueue.invokeLater(new Runnable(){
+        EventQueue.invokeLater(new Runnable() {
             @Override
-            public void run()
-            {
-            try 
-            {
-                UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-            } 
-            catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException ex) 
-            {
-            }
-            
-            try {
-                // Load the background image
-                planet = ImageIO.read(this.getClass().getResource(imgstreet));
-            
-            panel.add(label);
-            
-            frame.add(panel);
-
-            frame.setSize(planet.getWidth(), planet.getHeight());
-            frame.setLocationRelativeTo(null);
-            frame.setAlwaysOnTop(true);
-            frame.setResizable(false);
-
-            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-            frame.setContentPane(new JLabel(new ImageIcon(planet)));
-
-            frame.setLayout(new GridBagLayout());
-            GridBagConstraints gbc = new GridBagConstraints();
-            gbc.gridwidth = GridBagConstraints.REMAINDER;
-        
-            easy.setFont(font);
-            frame.add(easy, gbc);
-            medium.setFont(font);
-            frame.add(medium,gbc);
-            hard.setFont(font);
-            frame.add(hard,gbc);
-            frame.add(menubar);
-            frame.setJMenuBar(menubar);
-            menubar.add(optionMenu);
-            optionMenu.add(quitItem);
-        
-        }
-            catch (IOException exp)
-            {
-                exp.printStackTrace();
-            }
-
-            quitItem.addActionListener(new ActionListener()
-            {
-                public void actionPerformed(ActionEvent e)
-                {
-            
-                    if(e.getSource()==quitItem)
-                    {
-                        System.out.println("Thank you for playing ! Goodbye");
-                        System.exit(0);
-                    }
-                
+            public void run() {
+                try {
+                    UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+                } catch (ClassNotFoundException | InstantiationException | IllegalAccessException
+                        | UnsupportedLookAndFeelException ex) {
                 }
-            });
-            
-                easy.addActionListener(new ActionListener()
-                {
-                    public void actionPerformed(ActionEvent e)
-                    {
-                       frame.setVisible(false);
-                       new guieasy();
-                        
+
+                try {
+                    // Load the background image
+                    planet = ImageIO.read(this.getClass().getResource(imgstreet));
+
+                    panel.add(label);
+
+                    frame.add(panel);
+
+                    frame.setSize(planet.getWidth(), planet.getHeight());
+                    frame.setLocationRelativeTo(null);
+                    frame.setAlwaysOnTop(true);
+                    frame.setResizable(false);
+
+                    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+                    frame.setContentPane(new JLabel(new ImageIcon(planet)));
+
+                    frame.setLayout(new GridBagLayout());
+                    GridBagConstraints gbc = new GridBagConstraints();
+                    gbc.gridwidth = GridBagConstraints.REMAINDER;
+
+                    easy.setFont(font);
+                    frame.add(easy, gbc);
+                    medium.setFont(font);
+                    frame.add(medium, gbc);
+                    hard.setFont(font);
+                    frame.add(hard, gbc);
+                    frame.add(menubar);
+                    frame.setJMenuBar(menubar);
+                    menubar.add(optionMenu);
+                    optionMenu.add(quitItem);
+
+                } catch (IOException exp) {
+                    exp.printStackTrace();
+                }
+
+                quitItem.addActionListener(new ActionListener() {
+                    public void actionPerformed(ActionEvent e) {
+
+                        if (e.getSource() == quitItem) {
+                            System.out.println("Thank you for playing ! Goodbye");
+                            System.exit(0);
+                        }
+
                     }
                 });
 
-                medium.addActionListener(new ActionListener()
-                {
-                    public void actionPerformed(ActionEvent e)
-                    {
-                
-                        System.out.println(Medium.choiceOfEnigma());
+                easy.addActionListener(new ActionListener() {
+                    public void actionPerformed(ActionEvent e) {
+                        frame.setVisible(false);
+                        new guieasy();
+
+                    }
+                });
+
+                medium.addActionListener(new ActionListener() {
+                    public void actionPerformed(ActionEvent e) {
+
                         new guimed();
                         frame.setVisible(false);
                     }
                 });
 
-                hard.addActionListener(new ActionListener()
-                {
-                    public void actionPerformed(ActionEvent e)
-                    {
-                
-                        System.out.println(Hard.choiceOfEnigma());
+                hard.addActionListener(new ActionListener() {
+                    public void actionPerformed(ActionEvent e) {
+
                         new guihard();
                         frame.setVisible(false);
                     }
                 });
             }
         });
-            
-                frame.pack();
-                frame.setVisible(true);
+
+        frame.pack();
+        frame.setVisible(true);
     }
-        public static void jeu()
-        {
-            new GUI2();
-        }
-    
+
+    public static void jeu() {
+        new GUI2();
+    }
+
 }

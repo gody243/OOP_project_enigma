@@ -106,11 +106,11 @@ public class Level extends Questions {
 
     public static String playerAnswer() {
         if (questions.containsKey(player)) {
-            System.out.println(questions.get(player));
+           // System.out.println(questions.get(player));
             return questions.get(player);
 
         } else {
-            return ("This is not a valid number!");
+            return "This is not a valid number!";
         }
     }
 
@@ -129,7 +129,7 @@ public class Level extends Questions {
         } else {
             System.out.println("Incorrect !\nTry again");
             guieasy.question.setVisible(false);
-            return "Incorrect ! Try again " + questions.get(player) + " Score : " + Points.point;
+            return "Incorrect! Try again " + questions.get(player) + " Score : " + Points.point;
         }
     }
 
@@ -143,7 +143,7 @@ public class Level extends Questions {
         } else {
             System.out.println("Incorrect !\nTry again");
             guimed.question.setVisible(false);
-            return "Incorrect ! Try again " + questions.get(player) + " Score : " + Points.point;
+            return "Incorrect! Try again " + questions.get(player) + " Score : " + Points.point;
         }
     }
 

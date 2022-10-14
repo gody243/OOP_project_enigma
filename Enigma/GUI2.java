@@ -55,7 +55,7 @@ public class GUI2 {
         menubar = new JMenuBar();
         quitItem = new JMenuItem("Quit");
         optionMenu = new JMenu("Option");
-        String imgstreet = "img/dark-street.jpeg";
+        String imgstreet = "img/woodbg.jpg";
 
         EventQueue.invokeLater(new Runnable() {
             @Override
@@ -74,7 +74,7 @@ public class GUI2 {
 
                     frame.add(panel);
 
-                    frame.setSize(planet.getWidth(), planet.getHeight());
+                    frame.setSize(800,800);
                     frame.setLocationRelativeTo(null);
                     frame.setAlwaysOnTop(true);
                     frame.setResizable(false);

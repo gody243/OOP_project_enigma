@@ -18,7 +18,7 @@ import javax.swing.*;
  * @version (16/01/2019)
  */
 public class guieasy {
-    // variables d'instance - remplacez l'exemple qui suit par le vôtre
+  
     // private static GUI2 gui2;
     private Level level;
     // private static Hint hint;
@@ -65,7 +65,7 @@ public class guieasy {
         menubar = new JMenuBar();
         quitItem = new JMenuItem("Quit");
         optionMenu = new JMenu("Option");
-        String img = "img/dark-streeteasy.jpeg";
+        String img = "img/woodbg.jpg";
 
         font = new Font("serif", Font.PLAIN, 20);
 
@@ -87,7 +87,7 @@ public class guieasy {
                     // Load the background image
                     darkeasy = ImageIO.read(this.getClass().getResource(img));
 
-                    frame.setSize(darkeasy.getWidth(null), darkeasy.getHeight(null));
+                    frame.setSize(800,800);                  
                     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                     frame.setLocationRelativeTo(null);
                     frame.setAlwaysOnTop(true);
@@ -127,7 +127,7 @@ public class guieasy {
                     frame.add(pan);
                     frame.add(menubar);
                     frame.setJMenuBar(menubar);
-                    Color color = new Color(255, 0, 0);
+                    Color color = new Color(255, 255, 255);
 
                     JTextArea textArea = new JTextArea(
                             Easy.choiceOfEnigma());
@@ -146,7 +146,7 @@ public class guieasy {
                     quitItem.addActionListener(new ActionListener() {
                         public void actionPerformed(ActionEvent e) {
                             if (e.getSource() == quitItem) {
-                                System.out.println("Thank you for playing.  Good bye.");
+                                //System.out.println("Thank you for playing.  Good bye.");
                                 System.exit(0);
                             }
                         }

@@ -76,9 +76,9 @@ public class guihard {
                 }
                 try {
                     // Load the background image
-                    darkhard = ImageIO.read(this.getClass().getResourceAsStream("img/bghard.jpg"));
+                    darkhard = ImageIO.read(this.getClass().getResourceAsStream("img/woodbg.jpg"));
                     // Create the frame...
-                    frame.setSize(darkhard.getWidth(null), darkhard.getHeight(null));
+                    frame.setSize(800, 800);
                     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                     frame.setLocationRelativeTo(null);
                     frame.setAlwaysOnTop(true);
@@ -122,7 +122,7 @@ public class guihard {
                     frame.add(pan);
                     frame.add(menubar);
                     frame.setJMenuBar(menubar);
-                    Color color = new Color(255, 0, 0);
+                    Color color = new Color(255, 255, 255);
                     JTextArea textArea = new JTextArea(
                             Hard.choiceOfEnigma());
 
@@ -140,7 +140,7 @@ public class guihard {
                     quitItem.addActionListener(new ActionListener() {
                         public void actionPerformed(ActionEvent e) {
                             if (e.getSource() == quitItem) {
-                                System.out.println("Thank you for playing.  Good bye.");
+                               // System.out.println("Thank you for playing.  Good bye.");
                                 System.exit(0);
                             }
                         }

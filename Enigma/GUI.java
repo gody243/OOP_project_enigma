@@ -46,7 +46,7 @@ public class GUI extends JFrame {
         play = new JButton("PLAY");
         frame = new JFrame("Enigma");
 
-        String dark_forest = "img/dark_forest.png";
+        String dark_forest = "img/woodbg.jpg";
 
         EventQueue.invokeLater(new Runnable() {
             @Override
@@ -64,7 +64,7 @@ public class GUI extends JFrame {
 
                     // Create the frame...
 
-                    frame.setSize(forest.getWidth(), forest.getHeight());
+                    frame.setSize(800,800);
                     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                     frame.setAlwaysOnTop(true);
                     frame.setResizable(false);

@@ -52,7 +52,7 @@ public class Questions extends Solutions {
                         + "\nOn each little branch\nthere are 9 very little branches.\nOn each very little branch\nthere are minuscule branches."
                         + "\nOn each minuscule branch\nthere are 9 fruits.\nHow many cherries are there in total?");
         questions.put(9,
-                "10 birds are on a tree\nA hunter comes up and shoot with his\nrifle on one and kills him.\nHow many birds are left on the tree ?");
+                "10 birds are on a tree\nA hunter comes up and shoot with his\nrifle on one and kills it.\nHow many birds are left on the tree ?");
         questions.put(10, "How many animals of each species did\nMoses take with him on his arck ?");
 
     }
@@ -103,7 +103,7 @@ public class Questions extends Solutions {
         questions.put(26,
                 "Christelle needs someone to paint her wall,\nshe knows 3 people who could do it.\nFranck can paint a wall in 1 hour,"
                         + "\nJack in 3 hours and Leon in 6 hours.\nShe is in the rush and hire them 3.\nHow long is it going to take\nfor the 3 of them to paint this wall ?(in minutes)");
-        questions.put(27, "I am between 188 and 189,\nbut I am Not 189.\nWho am I ?");
+        questions.put(27, "I am between 188 and 189,\nbut I am not 189.\nWho am I ?");
         questions.put(28, "When I dry,I get wet.\nWho am I ?");
         questions.put(29, "It has got teeth but does Not bite,\nWhat is it ?");
         questions.put(30,

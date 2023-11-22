@@ -3,7 +3,7 @@ package Enigma;
 import java.util.*;
 
 /**
- * Décrivez votre classe Hint ici.
+ * Decrivez votre classe Hint ici.
  *
  * @author (votre nom)
  * @version (un numéro de version ou une date)
@@ -11,14 +11,15 @@ import java.util.*;
 public class Hint {
     // variables d'instance - remplacez l'exemple qui suit par le vôtre
 
-    public static LinkedHashMap<Integer, String> hint;
-
+    public static Map<Integer, String> hint;
+    Level level;
     /**
      * The constructor initializes the Hashmap Hint
      */
     public Hint() {
         // initialisation des variables d'instance
-        hint = new LinkedHashMap<Integer, String>();
+        hint = new LinkedHashMap<>();
+        level=new Level();
         easyH();
         mediumH();
         hardH();
@@ -65,17 +66,13 @@ public class Hint {
                 + "brain to come up with something tiny and unexpected.");
         hint.put(26, "The fractions can help you.");
         hint.put(27, "Read it carefully.");
-        hint.put(8, "I am an object.");
+        hint.put(28, "I am an object.");
         hint.put(29, "You use it everyday(I hope so)");
         hint.put(30, "The answer is neutral.");
     }
 
-    public static String hint() {
-        if (hint.containsKey(Level.player)) {
-            return hint.get(Level.player);
-        } else {
-            System.out.println("error");
-        }
-        return hint.get(Level.player);
+    public String hint() {
+        return hint.getOrDefault(level.getPlayer(),"error");
+
     }
 }

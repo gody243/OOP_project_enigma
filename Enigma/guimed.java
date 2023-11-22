@@ -8,8 +8,8 @@ import java.io.*;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
-import static Enigma.Level.answer;
-import static Enigma.Level.player;
+import  Enigma.Level;
+import  Enigma.Level;
 
 /**
  * Décrivez votre classe guimed ici.
@@ -25,7 +25,7 @@ public class guimed {
     private JButton h;
     private JButton back;
     private JButton check;
-
+    private Hint indice;
     private JPanel pan;
 
     static JLabel label, hint, question;
@@ -52,7 +52,7 @@ public class guimed {
         enter = new JButton("ENTER");
         back = new JButton("BACK");
         h = new JButton("HINT");
-
+        indice=new Hint();
         pan = new JPanel(new GridBagLayout());
 
         font = new Font("serif", Font.PLAIN, 20);
@@ -145,21 +145,21 @@ public class guimed {
 
                     enter.addActionListener(new ActionListener() {
                         public void actionPerformed(ActionEvent e) {
-                            player = Integer.parseInt(field1.getText());
+                            level.setPlayer(Integer.parseInt(field1.getText()));
 
-                            if (player <= 10) {
+                            if (level.getPlayer() <= 10) {
                                 System.out.println("Enter a number between 11 and 20 !");
 
-                            } else if (player > 20) {
+                            } else if (level.getPlayer()  > 20) {
                                 System.out.println("Enter a number between 11 and 20 !");
                             } else {
                                 textArea.setVisible(false);
-                                question = new JLabel(Level.playerAnswer());
+                                question = new JLabel(level.playerAnswer());
                                 question.setFont(new Font("Serif", Font.PLAIN, 20));
                                 question.setOpaque(false);
                                 question.setForeground(color);
                                 question.setText("<html><div style=\"width:300px;height:300px;\">"
-                                        + Level.playerAnswer() + "</div></html>");
+                                        + level.playerAnswer() + "</div></html>");
                                 frame.add(question, gbc);
 
                                 h.setVisible(true);
@@ -174,9 +174,9 @@ public class guimed {
                     h.addActionListener(new ActionListener() {
                         public void actionPerformed(ActionEvent e) {
                             if (e.getSource() == h)
-                                System.out.println(Hint.hint());
+                                System.out.println(indice.hint());
                             hint.setText(
-                                    "<html><div style=\"width:100px;height:0px;\">" + Hint.hint() + "</div></html>");
+                                    "<html><div style=\"width:100px;height:0px;\">" + indice.hint() + "</div></html>");
                             hint.setFont(new Font("Serif", Font.PLAIN, 20));
                             hint.setForeground(color);
                             frame.add(hint, gbc);
@@ -195,7 +195,7 @@ public class guimed {
 
                             if (e.getSource() == check) {
 
-                                answer = text2.getText().toLowerCase();
+                                level.setAnswer(text2.getText().toLowerCase());
 
                             }
                             label.setText("<html><div style=\"width:200px;height:300px;\">" + level.goodMedium()

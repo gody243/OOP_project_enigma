@@ -4,8 +4,7 @@ import java.awt.*;
 import java.awt.event.*;
 import java.awt.image.*;
 import java.io.*;
-import static Enigma.Level.answer;
-import static Enigma.Level.player;
+
 import javax.imageio.ImageIO;
 import javax.swing.*;
 
@@ -26,7 +25,7 @@ public class guihard {
     private JButton check;
 
     private JPanel pan;
-
+    private Hint indice;
     private final JTextField field1, text2;
 
     static JLabel label, hint, question;
@@ -51,7 +50,7 @@ public class guihard {
         back = new JButton("BACK");
         h = new JButton("HINT");
         check = new JButton("CHECK");
-        h = new JButton("HINT");
+       indice=new Hint();
 
         pan = new JPanel(new GridBagLayout());
 
@@ -147,19 +146,20 @@ public class guihard {
                     });
                     enter.addActionListener(new ActionListener() {
                         public void actionPerformed(ActionEvent e) {
-                            player = Integer.parseInt(field1.getText());
-                            if (player <= 20) {
+
+                             level.setPlayer(Integer.parseInt((field1.getText())));
+                            if (level.getPlayer() <= 20) {
                                 System.out.println("Enter a number between 21 and 30 !");
-                            } else if (player > 30) {
+                            } else if (level.getPlayer() > 30) {
                                 System.out.println("Enter a number between 21 and 30 !");
                             } else {
                                 textArea.setVisible(false);
-                                question = new JLabel(Level.playerAnswer());
+                                question = new JLabel(level.playerAnswer());
                                 question.setFont(new Font("Serif", Font.PLAIN, 20));
                                 question.setOpaque(false);
                                 question.setForeground(color);
                                 question.setText("<html><div style=\"width:300px;height:450px;\">"
-                                        + Level.playerAnswer() + "</div></html>");
+                                        + level.playerAnswer() + "</div></html>");
 
                                 frame.add(question, gbc);
 
@@ -169,15 +169,17 @@ public class guihard {
                                 enter.setVisible(false);
                                 field1.setVisible(false);
                             }
+                            //level.setPlayer(Level.parse(level.getPlayer()));
                         }
                     });
 
                     h.addActionListener(new ActionListener() {
                         public void actionPerformed(ActionEvent e) {
 
-                            System.out.println(Hint.hint());
+                            System.out.println(indice.hint());
+                            System.out.println(level.getPlayer());
                             hint.setText(
-                                    "<html><div style=\"width:200px;height:0px;\">" + Hint.hint() + "</div></html>");
+                                    "<html><div style=\"width:200px;height:0px;\">" + indice.hint() + "</div></html>");
                             hint.setFont(new Font("Serif", Font.PLAIN, 20));
                             hint.setForeground(color);
                             frame.add(hint, gbc);
@@ -195,7 +197,7 @@ public class guihard {
                     check.addActionListener(new ActionListener() {
                         public void actionPerformed(ActionEvent e) {
                             if (e.getSource() == check) {
-                                answer = text2.getText().toLowerCase();
+                                level.setAnswer(text2.getText().toLowerCase());
                             }
                             label.setText("<html><div style=\"width:200px;height:450px;\">" + level.goodHard()
                                     + "</div></html>");

@@ -1,7 +1,7 @@
 package Enigma;
 
-import static Enigma.Level.answer;
-import static Enigma.Level.player;
+import Enigma.Level;
+import Enigma.Level;
 
 import java.awt.*;
 import java.awt.event.*;
@@ -21,7 +21,7 @@ public class guieasy {
   
     // private static GUI2 gui2;
     private Level level;
-    // private static Hint hint;
+     private Hint indice;
 
     private JButton enter;
     private JButton h;
@@ -50,7 +50,7 @@ public class guieasy {
     public guieasy() {
         // initialisation des variables d'instance
         level = new Level();
-        // hint=new Hint();
+         indice=new Hint();
         easy=new Easy();
         field1 = new JTextField("", 15);
         field2 = new JTextField("", 15);
@@ -159,21 +159,21 @@ public class guieasy {
 
                     enter.addActionListener(new ActionListener() {
                         public void actionPerformed(ActionEvent e) {
-                            player = Integer.parseInt(field1.getText());
+                            level.setPlayer(Integer.parseInt(field1.getText()));
 
-                            if (player < 1) {
+                            if (level.getPlayer() < 1) {
                                 System.out.println("Enter a number between 1 and 10");
 
-                            } else if (player > 10) {
+                            } else if (level.getPlayer() > 10) {
                                 System.out.println("Enter a number between 1 and 10");
                             } else {
                                 textArea.setVisible(false);
-                                question = new JLabel(Level.playerAnswer());
+                                question = new JLabel(level.playerAnswer());
                                 question.setFont(new Font("Serif", Font.PLAIN, 20));
                                 question.setOpaque(false);
                                 question.setForeground(color);
                                 question.setText("<html><div style=\"width:300px;height:450px;\">"
-                                        + Level.playerAnswer() + "</div></html>");
+                                        + level.playerAnswer() + "</div></html>");
                                 frame.add(question, gbc);
 
                                 h.setVisible(true);
@@ -191,8 +191,8 @@ public class guieasy {
                     h.addActionListener(new ActionListener() {
                         public void actionPerformed(ActionEvent e) {
                             if (e.getSource() == h) {
-                                System.out.println(Hint.hint());
-                                hint.setText("<html><div style=\"width:100px;height:0px;\">" + Hint.hint()
+                                System.out.println(indice.hint());
+                                hint.setText("<html><div style=\"width:100px;height:0px;\">" + indice.hint()
                                         + "</div></html>");
                                 hint.setFont(new Font("Serif", Font.PLAIN, 20));
                                 hint.setForeground(color);
@@ -220,7 +220,7 @@ public class guieasy {
                     check.addActionListener(new ActionListener() {
                         public void actionPerformed(ActionEvent e) {
                             if (e.getSource() == check) {
-                                answer = field2.getText().toLowerCase();
+                                level.setAnswer( field2.getText().toLowerCase());
 
                             }
                             label.setText("<html><div style=\"width:200px;height:450px;\">" + level.goodEasy()

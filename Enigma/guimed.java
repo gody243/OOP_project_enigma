@@ -21,6 +21,7 @@ public class guimed {
     // variables d'instance - remplacez l'exemple qui suit par le vôtre
 
     private JButton enter;
+    private Medium medium;
     private JButton h;
     private JButton back;
     private JButton check;
@@ -46,7 +47,7 @@ public class guimed {
         level = new Level();
         field1 = new JTextField("", 15);
         text2 = new JTextField(15);
-
+        medium=new Medium();
         check = new JButton("CHECK");
         enter = new JButton("ENTER");
         back = new JButton("BACK");
@@ -121,7 +122,7 @@ public class guimed {
                     frame.setJMenuBar(menubar);
                     Color color = new Color(255, 255, 255);
                     JTextArea textArea = new JTextArea(
-                            Medium.choiceOfEnigma());
+                            medium.choiceOfEnigma());
 
                     textArea.setFont(new Font("Serif", Font.PLAIN, 20));
                     textArea.setLineWrap(false);

@@ -28,6 +28,7 @@ public class guieasy {
     private JButton check;
     private JButton back;
 
+    private Easy easy;
     private JPanel pan;
     static JLabel label, hint, question;
 
@@ -36,7 +37,7 @@ public class guieasy {
     private JMenuItem quitItem;
 
     final JTextField field1, field2;
-
+    Points point;
     private Font font;
 
     private JFrame frame;
@@ -50,10 +51,10 @@ public class guieasy {
         // initialisation des variables d'instance
         level = new Level();
         // hint=new Hint();
-
+        easy=new Easy();
         field1 = new JTextField("", 15);
         field2 = new JTextField("", 15);
-
+        point=new Points();
         enter = new JButton("ENTER");
         back = new JButton("BACK");
         h = new JButton("HINT");
@@ -130,7 +131,7 @@ public class guieasy {
                     Color color = new Color(255, 255, 255);
 
                     JTextArea textArea = new JTextArea(
-                            Easy.choiceOfEnigma());
+                            easy.choiceOfEnigma());
 
                     textArea.setFont(new Font("Serif", Font.PLAIN, 20));
                     textArea.setLineWrap(false);
@@ -206,7 +207,7 @@ public class guieasy {
                      */
                     back.addActionListener(new ActionListener() {
                         public void actionPerformed(ActionEvent e) {
-                            Points.point = 0;
+                            point.getPoint();
                             GUI2.jeu();
                             frame.setVisible(false);
 

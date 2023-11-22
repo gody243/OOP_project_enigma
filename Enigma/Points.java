@@ -10,6 +10,13 @@ package Enigma;
 public class Points {
 
     // variables d'instance - remplacez l'exemple qui suit par le vôtre
-    public static int point = 0;
+    private  int point = 0;
 
+    public int getPoint() {
+        return point;
+    }
+
+    public void setPoint(int point) {
+        this.point += point;
+    }
 }

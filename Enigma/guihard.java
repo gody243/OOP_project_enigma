@@ -18,7 +18,7 @@ import javax.swing.*;
 public class guihard {
     // variables d'instance - remplacez l'exemple qui suit par le vôtre
     private static Level level;
-    // private Hint hint;
+    private Hard hard;
 
     private JButton enter;
     private JButton h;
@@ -46,7 +46,7 @@ public class guihard {
         label = new JLabel("This is a Swing frame", JLabel.HORIZONTAL);
         field1 = new JTextField(15);
         text2 = new JTextField(15);
-
+        hard=new Hard();
         enter = new JButton("ENTER");
         back = new JButton("BACK");
         h = new JButton("HINT");
@@ -124,7 +124,7 @@ public class guihard {
                     frame.setJMenuBar(menubar);
                     Color color = new Color(255, 255, 255);
                     JTextArea textArea = new JTextArea(
-                            Hard.choiceOfEnigma());
+                            hard.choiceOfEnigma());
 
                     textArea.setFont(new Font("Serif", Font.PLAIN, 20));
                     textArea.setLineWrap(false);

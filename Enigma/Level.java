@@ -35,9 +35,8 @@ public class Level extends Questions {
     /**
      * In this method the player chooses which level he wants to play,this is the
      * method called in the main class
-     * 
-     * @param no parameter
-     * @return no return
+
+     *
      */
     public void level() {
         System.out.println("Choose your level :\teasy\t\tmedium\t\thard");
@@ -50,7 +49,7 @@ public class Level extends Questions {
 
         switch (answer) {
             case "easy":
-                e.choice();
+                e.choiceOfEnigma();
                 while (!(player == 1 || player == 2 || player == 3 || player == 4 || player == 5 || player == 6
                         || player == 7 || player == 8 || player == 9 || player == 10)) {
                     // System.out.println("Invalid");
@@ -60,7 +59,7 @@ public class Level extends Questions {
                 player = sc.nextInt();
                 break;
             case "medium":
-                m.choice();
+                m.choiceOfEnigma();
                 while (!(player == 11 || player == 12 || player == 13 || player == 14 || player == 15 || player == 16
                         || player == 17 || player == 18 || player == 19 || player == 20)) {
                     // System.out.println("Invalid");
@@ -69,7 +68,7 @@ public class Level extends Questions {
                 }
                 break;
             case "hard":
-                h.choice();
+                h.choiceOfEnigma();
                 while (!(player == 21 || player == 22 || player == 23 || player == 24 || player == 25 || player == 26
                         || player == 27 || player == 28 || player == 29 || player == 30)) {
                     // System.out.println("Invalid");
@@ -99,8 +98,7 @@ public class Level extends Questions {
     /**
      * When the choice of enigma is made, this method shows the question that the
      * player wants to answer to
-     * 
-     * @param no parameter
+
      * @return the question
      */
 
@@ -115,56 +113,55 @@ public class Level extends Questions {
     }
 
     /**
-     * Same method as above except there is no while loop and it is for GUI
+     * Same method as above except there is no" while loop" and it is for GUI
      * 
      * @return String
      */
     public String goodEasy() {
 
         if (solutions.get(player).equals(answer)) {
-            Points.point = Points.point + 5;
-            System.out.println("Correct\nScore: " + Points.point);
+            point.setPoint(5);
+            System.out.println("Correct\nScore: " + point);
             guieasy.question.setVisible(false);
-            return nextEnigma() + "\nScore : " + Points.point;
+            return nextEnigma() + "\nScore : " + point.getPoint();
         } else {
             System.out.println("Incorrect !\nTry again");
             guieasy.question.setVisible(false);
-            return "Incorrect! Try again " + questions.get(player) + " Score : " + Points.point;
+            return "Incorrect! Try again " + questions.get(player) + " Score : " + point.getPoint();
         }
     }
 
     public String goodMedium() {
 
         if (solutions.get(player).equals(answer)) {
-            Points.point = Points.point + 5;
-            System.out.println("Correct\nScore: " + Points.point);
+            point.setPoint(5);
+            System.out.println("Correct\nScore: " + point.getPoint());
             guimed.question.setVisible(false);
-            return nextEnigma() + "\nScore : " + Points.point;
+            return nextEnigma() + "\nScore : " + point.getPoint();
         } else {
             System.out.println("Incorrect !\nTry again");
             guimed.question.setVisible(false);
-            return "Incorrect! Try again " + questions.get(player) + " Score : " + Points.point;
+            return "Incorrect! Try again " + questions.get(player) + " Score : " + point.getPoint();
         }
     }
 
     public String goodHard() {
 
         if (solutions.get(player).equals(answer)) {
-            Points.point = Points.point + 5;
-            System.out.println("Correct\nScore: " + Points.point);
+            point.setPoint(5);
+
             guihard.question.setVisible(false);
-            return nextEnigma() + "\nScore : " + Points.point;
+            return nextEnigma() + "\nScore : " + point.getPoint();
         } else {
             System.out.println("Incorrect !\nTry again");
             guihard.question.setVisible(false);
-            return "Incorrect ! Try again " + questions.get(player) + " Score : " + Points.point;
+            return "Incorrect ! Try again " + questions.get(player) + " Score : " +point.getPoint();
         }
     }
 
     /**
      * After a good answer, the next question comes up automatically
-     * 
-     * @param no parameter
+
      * @return returns the next question
      */
     public String nextEnigma() {

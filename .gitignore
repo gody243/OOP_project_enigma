@@ -1,5 +1,6 @@
 lib/
 doc/
+target/
 doc/Enigma/Level.html
 Enigma/Easy.class
 Enigma/Easy.ctxt

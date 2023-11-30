@@ -1,7 +1,7 @@
 package Enigma;
 
 import Enigma.Level;
-import Enigma.Level;
+
 
 import java.awt.*;
 import java.awt.event.*;

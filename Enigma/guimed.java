@@ -9,7 +9,7 @@ import java.io.*;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import  Enigma.Level;
-import  Enigma.Level;
+
 
 /**
  * Décrivez votre classe guimed ici.

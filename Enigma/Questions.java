@@ -28,7 +28,7 @@ public class Questions extends Solutions {
      * This method creates all the easy questions for the hashmap of enigma we have
      * the number of the question so we can have an order.
      * 
-     * @param no parameter
+     *
      * @return no return
      */
     private void easyQ() {
@@ -61,7 +61,7 @@ public class Questions extends Solutions {
      * This method creates all the medium questions for the hashmap of enigma we
      * have the number of the question so we can have an order.
      * 
-     * @param no parameter
+     *
      * @return no return
      */
     private void mediumQ() {
@@ -85,7 +85,7 @@ public class Questions extends Solutions {
      * This method creates all the hard questions for the hashmap of enigma we have
      * the number of the question so we can have an order.
      * 
-     * @param no parameter
+     *
      * @return no return
      */
     private void hardQ() {

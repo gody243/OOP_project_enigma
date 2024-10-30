@@ -1,0 +1,10 @@
+lib/
+doc/
+target/
+
+package.bluej
+OOP_project_enigma.iml
+
+Enigma/Thumbs.db
+.idea/
+Enigma/out.production.Enigma.Enigma

@@ -5,22 +5,24 @@ import java.awt.image.*;
 import java.awt.event.*;
 import javax.swing.*;
 import java.io.*;
+import java.util.Objects;
 import javax.imageio.ImageIO;
 
-@SuppressWarnings("serial")
+import static java.lang.System.*;
+
 public class GUI extends JFrame {
 
     public static Main m1;
-    // private static GUI2 gui2;
-    // private static Level level;
 
-    private JPanel pan;
-    private JMenuBar menubar;
-    private JMenu optionMenu;
-    private JButton play;
-    private JFrame frame;
-    private JMenuItem quitItem;
-    private Font font;
+
+    private final JPanel pan;
+    private final JMenuBar menubar;
+    private final JMenu optionMenu;
+    private final JButton play;
+    private final JFrame frame;
+
+    private final JMenuItem quitItem;
+    private final Font font;
 
     private BufferedImage forest;
 
@@ -35,9 +37,9 @@ public class GUI extends JFrame {
     private GUI() {
         // initialisation des variables d'instance
 
-        // level=new Level();
+
         m1 = new Main();
-        // gui2=new GUI2();
+
         pan = new JPanel();
         font = new Font("serif", Font.PLAIN, 20);
         optionMenu = new JMenu("Option");
@@ -60,7 +62,7 @@ public class GUI extends JFrame {
 
                 try {
                     // Load the background image
-                    forest = ImageIO.read(this.getClass().getResource(dark_forest));
+                    forest = ImageIO.read(Objects.requireNonNull(this.getClass().getResource(dark_forest)));
 
                     // Create the frame...
 
@@ -99,29 +101,25 @@ public class GUI extends JFrame {
                     optionMenu.add(quitItem);
                     frame.add(menubar);
                     frame.setJMenuBar(menubar);
-                    // frame.pack();
+
                     frame.setLocationRelativeTo(null);
-                    // frame.setVisible(true);
+
 
                 } catch (IOException exp) {
                     exp.printStackTrace();
                 }
 
-                quitItem.addActionListener(new ActionListener() {
-                    public void actionPerformed(ActionEvent e) {
-                        if (e.getSource() == quitItem) {
-                            System.out.println("Thank you for playing.  Good bye.");
-                            System.exit(0);
-                        }
+                quitItem.addActionListener(e -> {
+                    if (e.getSource() == quitItem) {
+                        out.println("Thank you for playing.  Good bye.");
+                        exit(0);
                     }
                 });
-                play.addActionListener(new ActionListener() {
-                    public void actionPerformed(ActionEvent e) {
+                play.addActionListener(e -> {
 
-                        GUI2.jeu();
+                    GUI2.jeu();
 
-                        frame.setVisible(false);
-                    }
+                    frame.setVisible(false);
                 }); // Finally add the Panel to the Frame and set thinsg visible ...
 
             }
@@ -132,6 +130,7 @@ public class GUI extends JFrame {
         frame.setVisible(true);
     }
 
+    @Override
     public Dimension getPreferredSize() {
         return forest == null ? pan.getPreferredSize() : new Dimension(forest.getWidth(), forest.getHeight());
     }

@@ -10,7 +10,7 @@ package Enigma;
  * @author (your name)
  * @version (a version number or a date)
  */
-public class Medium extends EasyMediumHard {
+public class Medium implements EasyMediumHard {
 
     public String choiceOfEnigma() {
 

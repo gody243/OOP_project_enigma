@@ -1,6 +1,6 @@
 package Enigma;
 
-public abstract class EasyMediumHard {
+interface EasyMediumHard {
 
     public abstract String choiceOfEnigma();
 

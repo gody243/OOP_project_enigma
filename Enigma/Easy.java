@@ -7,7 +7,7 @@ package Enigma;
  * @author (205229)
  * @version (a version number 21/11/2018)
  */
-public class Easy extends EasyMediumHard {
+public class Easy implements EasyMediumHard {
 
     @Override
     public String choiceOfEnigma() {

@@ -1,4 +1,8 @@
-package Enigma;
+package Enigma.ui;
+
+import Enigma.Hard;
+import Enigma.Hint;
+import Enigma.Level;
 
 import java.awt.*;
 import java.awt.event.*;

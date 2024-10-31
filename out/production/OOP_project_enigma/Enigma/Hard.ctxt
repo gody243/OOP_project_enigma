@@ -1,0 +1,11 @@
+#BlueJ class context
+comment0.target=Hard
+comment0.text=\r\n\ This\ is\ the\ level\ of\ difficulty\ Easy\ \ where\ all\ the\ easy\ questions\ are\r\n\ @author\ (205229)\r\n\ @version\ (16/01/2019)\r\n
+comment1.params=
+comment1.target=Hard()
+comment2.params=
+comment2.target=java.lang.String\ choiceOfEnigma()
+comment2.text=\r\n\ This\ method\ enables\ the\ player\ to\ start\ with\ any\ question\ he\ wants\r\n\ @aram\ no\ parameter\r\n\ @return\ no\ return\ \r\n
+comment3.params=
+comment3.target=void\ choice()
+numComments=4

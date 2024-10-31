@@ -71,9 +71,7 @@ public class Hint {
     }
 
     public static String hint() {
-        if (hint.containsKey(Level.player)) {
-            return hint.get(Level.player);
-        } else {
+        if (!hint.containsKey(Level.player)) {
             System.out.println("error");
         }
         return hint.get(Level.player);

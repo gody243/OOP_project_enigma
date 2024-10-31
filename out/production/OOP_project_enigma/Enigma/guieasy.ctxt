@@ -1,0 +1,23 @@
+#BlueJ class context
+comment0.target=guieasy
+comment0.text=\r\n\ D\u00E9crivez\ votre\ classe\ guieasy\ ici.\r\n\r\n\ @author\ (205229)\r\n\ @version\ (16/01/2019)\r\n
+comment1.params=
+comment1.target=guieasy()
+comment1.text=\r\n\ Constructeur\ d'objets\ de\ classe\ guieasy\r\n
+comment2.params=
+comment2.target=void\ jeu()
+comment3.params=
+comment3.target=void\ run()
+comment4.params=e
+comment4.target=void\ actionPerformed(java.awt.event.ActionEvent)
+comment5.params=e
+comment5.target=void\ actionPerformed(java.awt.event.ActionEvent)
+comment6.params=e
+comment6.target=void\ actionPerformed(java.awt.event.ActionEvent)
+comment7.params=e
+comment7.target=void\ actionPerformed(java.awt.event.ActionEvent)
+comment8.params=e
+comment8.target=void\ actionPerformed(java.awt.event.ActionEvent)
+comment9.params=
+comment9.target=java.awt.Dimension\ getPreferredSize()
+numComments=10

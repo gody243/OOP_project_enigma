@@ -1,7 +1,7 @@
-package Enigma;
+package enigma;
 
-import static Enigma.Level.answer;
-import static Enigma.Level.player;
+import static enigma.Level.answer;
+import static enigma.Level.player;
 
 import java.awt.*;
 import java.awt.event.*;

@@ -1,11 +1,11 @@
-package Enigma;
+package enigma;
 
 import java.awt.*;
 import java.awt.event.*;
 import java.awt.image.*;
 import java.io.*;
-import static Enigma.Level.answer;
-import static Enigma.Level.player;
+import static enigma.Level.answer;
+import static enigma.Level.player;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 

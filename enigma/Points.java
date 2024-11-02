@@ -1,4 +1,4 @@
-package Enigma;
+package enigma;
 
 /**
  * This point of the player.

@@ -216,18 +216,16 @@ public class guieasy {
                      * This button is visible once the question comes up.
                      * It checks if the answer is good or not.
                      */
-                    check.addActionListener(new ActionListener() {
-                        public void actionPerformed(ActionEvent e) {
-                            if (e.getSource() == check) {
-                                answer = field2.getText().toLowerCase();
+                    check.addActionListener(e -> {
+                        if (e.getSource() == check) {
+                            answer = field2.getText().toLowerCase();
 
-                            }
-                            label.setText("<html><div style=\"width:200px;height:450px;\">" + level.goodEasy()
-                                    + "</div></html>");
-                            label.setFont(new Font("Serif", Font.PLAIN, 20));
-                            label.setForeground(color);
-                            frame.add(label, gbc);
                         }
+                        label.setText("<html><div style=\"width:200px;height:450px;\">" + level.goodEasy()
+                                + "</div></html>");
+                        label.setFont(new Font("Serif", Font.PLAIN, 20));
+                        label.setForeground(color);
+                        frame.add(label, gbc);
                     });
                 } catch (IOException exp) {
                     exp.printStackTrace();

@@ -16,7 +16,7 @@ public abstract class AbstractFrame extends JFrame {
     protected AbstractFrame(String title) {
         super(title);
         this.setFont(new Font("serif", Font.PLAIN,18));
-        this.setBackground(new Color(255, 255, 255));
+        this.setForeground(new Color(255, 255, 255));
         this.setSize(800,800);
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         this.setAlwaysOnTop(true);

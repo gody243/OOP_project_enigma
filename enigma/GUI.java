@@ -22,7 +22,7 @@ public class GUI extends AbstractFrame {
         Main m1=new Main();
         Font font = this.getFont();
         JButton play = new JButton("PLAY");
-        Color color = this.getBackground();
+        Color color = this.getForeground();
         this.setLayout(new GridBagLayout());
 
         GridBagConstraints gbc = new GridBagConstraints();

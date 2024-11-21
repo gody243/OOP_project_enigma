@@ -10,9 +10,6 @@ public class GUI extends AbstractFrame {
         gui.showFrame();
     }
 
-    /**
-     * Constructeur d'objets de classe GUI
-     */
     private GUI() {
         super("enigma");
             }

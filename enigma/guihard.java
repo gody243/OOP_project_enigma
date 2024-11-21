@@ -4,6 +4,8 @@ import java.awt.*;
 import java.awt.event.*;
 import java.awt.image.*;
 import java.io.*;
+import java.util.Objects;
+
 import static enigma.Level.answer;
 import static enigma.Level.player;
 import javax.imageio.ImageIO;
@@ -15,35 +17,37 @@ import javax.swing.*;
  * @author (votre nom)
  * @version (un numéro de version ou une date)
  */
-public class guihard {
+public class guihard extends GuiAbstract {
     // variables d'instance - remplacez l'exemple qui suit par le vôtre
     private static Level level;
     // private Hint hint;
 
-    private JButton enter;
+    private final JButton enter;
     private JButton h;
-    private JButton back;
-    private JButton check;
+    private final JButton back;
+    private final JButton check;
 
-    private JPanel pan;
+    private final JPanel pan;
 
     private final JTextField field1, text2;
 
-    static JLabel label, hint, question;
-    private JMenu optionMenu;
-    private JMenuBar menubar;
-    private JMenuItem quitItem;
+    static JLabel label;
+    static JLabel hint;
+    static JLabel question;
+    private final JMenu optionMenu;
+    private final JMenuBar menubar;
+    private final JMenuItem quitItem;
 
-    private Font font;
+    private final Font font;
 
-    private JFrame frame;
+    private final JFrame frame;
 
     private BufferedImage darkhard;
 
     public guihard() {
         level = new Level();
-        hint = new JLabel("hint", JLabel.HORIZONTAL);
-        label = new JLabel("This is a Swing frame", JLabel.HORIZONTAL);
+        hint = new JLabel("hint", SwingConstants.CENTER);
+        label = new JLabel("This is a Swing frame", SwingConstants.CENTER);
         field1 = new JTextField(15);
         text2 = new JTextField(15);
 
@@ -72,14 +76,14 @@ public class guihard {
                 try {
                     UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
                 } catch (ClassNotFoundException | InstantiationException | IllegalAccessException
-                        | UnsupportedLookAndFeelException ex) {
-                }
+                        | UnsupportedLookAndFeelException ex) {throw new IllegalStateException(ex);}
+
                 try {
                     // Load the background image
-                    darkhard = ImageIO.read(this.getClass().getResourceAsStream("img/woodbg.jpg"));
+                    darkhard = ImageIO.read(Objects.requireNonNull(this.getClass().getResourceAsStream("img/woodbg.jpg")));
                     // Create the frame...
                     frame.setSize(800, 800);
-                    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                    frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
                     frame.setLocationRelativeTo(null);
                     frame.setAlwaysOnTop(true);
                     frame.setResizable(false);
@@ -97,7 +101,7 @@ public class guihard {
                     frame.add(check, gbc);
                     h.setFont(font);
                     frame.add(h, gbc);
-                    // h.setVisible(false);
+
                     enter.setFont(font);
                     frame.add(enter, gbc);
                     back.setFont(font);
@@ -107,13 +111,10 @@ public class guihard {
                     gbc.gridy = 2;
                     pan.add(field1, gbc);
 
-                    // gbc. fill=GridBagConstraints.HORIZONTAL;
-                    // gbc.gridx=0;
-                    // gbc.gridy=0;
                     pan.add(text2, gbc);
                     pan.add(text2);
 
-                    // setJMenuBar(menubar);
+
                     // create the File menu
 
                     menubar.add(optionMenu);
@@ -137,77 +138,65 @@ public class guihard {
 
                     frame.setLocationRelativeTo(null);
 
-                    quitItem.addActionListener(new ActionListener() {
-                        public void actionPerformed(ActionEvent e) {
-                            if (e.getSource() == quitItem) {
-                               // System.out.println("Thank you for playing.  Good bye.");
-                                System.exit(0);
-                            }
+                    quitItem.addActionListener(e -> {
+                        if (e.getSource() == quitItem) {
+                            System.exit(0);
                         }
                     });
-                    enter.addActionListener(new ActionListener() {
-                        public void actionPerformed(ActionEvent e) {
-                            player = Integer.parseInt(field1.getText());
-                            if (player <= 20) {
-                                System.out.println("Enter a number between 21 and 30 !");
-                            } else if (player > 30) {
-                                System.out.println("Enter a number between 21 and 30 !");
-                            } else {
-                                textArea.setVisible(false);
-                                question = new JLabel(Level.playerAnswer());
-                                question.setFont(new Font("Serif", Font.PLAIN, 20));
-                                question.setOpaque(false);
-                                question.setForeground(color);
-                                question.setText("<html><div style=\"width:300px;height:450px;\">"
-                                        + Level.playerAnswer() + "</div></html>");
+                    enter.addActionListener(e -> {
+                        player = Integer.parseInt(field1.getText());
+                        if (player <= 20) {
+                            System.out.println("Enter a number between 21 and 30 !");
 
-                                frame.add(question, gbc);
+                        } else if (player > 30) {
+                            System.out.println("Enter a number between 21 and 30 !");
+                        } else {
+                            textArea.setVisible(false);
+                            question = new JLabel(Level.playerAnswer());
+                            question.setFont(new Font("Serif", Font.PLAIN, 20));
+                            question.setOpaque(false);
+                            question.setForeground(color);
+                            question.setText("<html><div style=\"width:300px;height:450px;\">"
+                                    + Level.playerAnswer() + "</div></html>");
 
-                                text2.setVisible(true);
-                                check.setVisible(true);
-                                h.setVisible(true);
-                                enter.setVisible(false);
-                                field1.setVisible(false);
-                            }
+                            frame.add(question, gbc);
+
+                            text2.setVisible(true);
+                            check.setVisible(true);
+                            h.setVisible(true);
+                            enter.setVisible(false);
+                            field1.setVisible(false);
                         }
                     });
 
-                    h.addActionListener(new ActionListener() {
-                        public void actionPerformed(ActionEvent e) {
+                    h.addActionListener(e -> {
+                        frame.add(hint, gbc);
+                        hint.setText(Hint.hints());
+                        hint.setFont(new Font("Serif", Font.PLAIN, 20));
+                        hint.setForeground(color);
 
-                            System.out.println(Hint.hint());
-                            hint.setText(
-                                    "<html><div style=\"width:200px;height:0px;\">" + Hint.hint() + "</div></html>");
-                            hint.setFont(new Font("Serif", Font.PLAIN, 20));
-                            hint.setForeground(color);
-                            frame.add(hint, gbc);
 
-                        }
                     });
-                    back.addActionListener(new ActionListener() {
-                        public void actionPerformed(ActionEvent e) {
-                            GUI2.jeu();
-                            frame.setVisible(false);
+                    back.addActionListener(e -> {
+                        GUI2.jeu();
+                        frame.setVisible(false);
 
-                        }
                     });
 
-                    check.addActionListener(new ActionListener() {
-                        public void actionPerformed(ActionEvent e) {
-                            if (e.getSource() == check) {
-                                answer = text2.getText().toLowerCase();
-                            }
-                            label.setText("<html><div style=\"width:200px;height:450px;\">" + level.goodHard()
-                                    + "</div></html>");
-                            label.setFont(new Font("Serif", Font.PLAIN, 20));
-                            label.setForeground(color);
-                            frame.add(label, gbc);
+                    check.addActionListener(e -> {
+                        if (e.getSource() == check) {
+                            answer = text2.getText().toLowerCase();
                         }
-
+                        label.setText("<html><div style=\"width:200px;height:450px;\">" + level.goodHard()
+                                + "</div></html>");
+                        label.setFont(new Font("Serif", Font.PLAIN, 20));
+                        label.setForeground(color);
+                        frame.add(label, gbc);
                     });
                 } catch (IOException exp) {
                     exp.printStackTrace();
                 }
+
             }
 
         });

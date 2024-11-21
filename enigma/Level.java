@@ -1,6 +1,9 @@
 package enigma;
 
 import java.util.*;
+import java.util.stream.IntStream;
+
+import static java.lang.System.*;
 
 /**
  * The Level class has a role of mediator between the Main class and the level
@@ -12,9 +15,9 @@ import java.util.*;
  */
 public class Level extends Questions {
     // instance variables - replace the example below with your own
-    Scanner sc = new Scanner(System.in);
+    Scanner sc = new Scanner(in);
     public static int player;
-    public static String answer;
+    protected static String answer;
     Easy e;
     Medium m;
     Hard h;
@@ -26,115 +29,122 @@ public class Level extends Questions {
      */
     public Level() {
         hint = new Hint();
-       // point = new Points();
         e = new Easy();
         m = new Medium();
         h = new Hard();
     }
 
-    /**
-     * In this method the player chooses which level he wants to play,this is the
-     * method called in the main class
-     * 
-     * @param no parameter
-     * @return no return
-     */
+
     public void level() {
-        System.out.println("Choose your level :\teasy\t\tmedium\t\thard");
+
         answer = sc.next();
         while (!(answer.equals("easy") || answer.equals("medium") || answer.equals("hard"))) {
-            System.out.println("Invalid");
-            System.out.println("Choose your level :\teasy\t\tmedium\t\thard");
             answer = sc.next();
         }
 
         switch (answer) {
-            case "easy":
+            case "easy" -> {
                 e.choice();
                 while (!(player < 1 || player > 10)) {
                     player = sc.nextInt();
                     playerAnswer();
+                    break;
                 }
                 player = sc.nextInt();
-                break;
-            case "medium":
+
+            }
+            case "medium" -> {
                 m.choice();
-                while (!(player < 11|| player > 20)) {
+                while (!(player < 11 || player > 20)) {
                     player = sc.nextInt();
                     playerAnswer();
+                    break;
                 }
-                break;
-            case "hard":
+            }
+            case "hard" -> {
                 h.choice();
                 while (!(player < 21 || player > 30)) {
                     player = sc.nextInt();
                     playerAnswer();
+                    break;
                 }
-                break;
+            }
+
+            default -> out.println("Invalid input. Please enter 'easy','medium' or 'hard'.");
         }
 
     }
     public static String playerAnswer() {
-        return questions.getOrDefault(player, "This is not a valid number!");
+        return question.getOrDefault(player, "This is not a valid number!");
     }
 
     public String goodEasy() {
 
-        if (solutions.get(player).equals(answer)) {
-            Points.point = Points.point + 5;
-            System.out.println("Correct\nScore: " + Points.point);
-            //guieasy.question.setVisible(false);
-            return nextEnigma() + "\n\nScore : " + Points.point;
+        if (solution.get(player).equals(answer)) {
+            Points.setPoint(Points.getPoint() + 5);
+            out.println("Correct\nScore: " + Points.getPoint());
+            return nextEnigma() + "\n\nScore : " + Points.getPoint();
         } else {
-            System.out.println("Incorrect !\nTry again");
             guieasy.question.setVisible(false);
-            return "Incorrect! Try again" + questions.get(player) + "\n Score : " + Points.point;
+            return "Incorrect! Try again" + question.get(player) + "\n Score : " + Points.getPoint();
         }
     }
 
     public String goodMedium() {
 
-        if (solutions.get(player).equals(answer)) {
-            Points.point = Points.point + 5;
-            System.out.println("Correct\nScore: " + Points.point);
-            //guimed.question.setVisible(false);
-            return nextEnigma() + "\nScore : " + Points.point;
-        } else {
-            System.out.println("Incorrect !\nTry again");
+        if (solution.get(player).equals(answer)) {
+            Points.setPoint(Points.getPoint() + 5);
+            out.println("Correct\nScore: " + Points.getPoint());
+            return nextEnigma() + "\nScore : " + Points.getPoint();
+        } else { 
             guimed.question.setVisible(false);
-            return "Incorrect! Try again " + questions.get(player) + " Score : " + Points.point;
+            return "Incorrect! Try again " + question.get(player) + " Score : " + Points.getPoint();
         }
     }
 
     public String goodHard() {
 
-        if (solutions.get(player).equals(answer)) {
-            Points.point = Points.point + 5;
-            System.out.println("Correct\nScore: " + Points.point);
-            //guihard.question.setVisible(false);
-            return nextEnigma() + "\nScore : " + Points.point;
+        if (solution.get(player).equals(answer)) {
+            Points.setPoint(Points.getPoint() + 5);
+            out.println("Correct\nScore: " + Points.getPoint());
+            return nextEnigma() + "\nScore : " + Points.getPoint();
         } else {
-            System.out.println("Incorrect !\nTry again");
             guihard.question.setVisible(false);
-            return "Incorrect ! Try again " + questions.get(player) + " Score : " + Points.point;
+            return "Incorrect ! Try again " + question.get(player) + " Score : " + Points.getPoint();
         }
     }
+//    public String goodAnswer() {
+//        if (solutions.get(player).equals(answer)) {
+//              Points.setPoint(Points.getPoint() + 5);
+//            return nextEnigma() + "\n\nScore : " + Points.getPoint();
+//
+//        } else {
+//
+//            if (IntStream.of(1, 2, 3, 4, 5, 6, 7, 8, 9, 10).anyMatch(i -> solutions.containsKey(i))) {
+//                guieasy.question.setVisible(false);
+//            }
+//            if (IntStream.of(11, 12, 13, 14, 15, 16, 17, 18, 19, 20).anyMatch(i -> solutions.containsKey(i))) {
+//                guimed.question.setVisible(false);
+//            }
+//             if (IntStream.of(21, 22, 23, 24, 25, 26, 27, 28, 29, 30).anyMatch(i -> solutions.containsKey(i))) {
+//                guihard.question.setVisible(false);
+//            }
+//
+//            return "Incorrect Try again " + questions.get(player);
+//
+//        }
+//
+//    }
 
-    /**
-     * After a good answer, the next question comes up automatically
-     * 
-     * @param no parameter
-     * @return returns the next question
-     */
+
     public String nextEnigma() {
-        System.out.println("Next enigma :");
+
         if (player >= 30) {
-            System.out.println("We're done here");
-            System.exit(0);
+            exit(0);
         }
         player++;
-        System.out.println(questions.get(player));
-        return questions.get(player);
+
+        return question.get(player);
     }
 
 }

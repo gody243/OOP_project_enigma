@@ -2,11 +2,13 @@ package enigma;
 
 import static enigma.Level.answer;
 import static enigma.Level.player;
+import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
 
 import java.awt.*;
 import java.awt.event.*;
 import java.awt.image.*;
 import java.io.*;
+import java.util.Objects;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -82,13 +84,14 @@ public class guieasy {
                     UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
                 } catch (ClassNotFoundException | InstantiationException | IllegalAccessException
                         | UnsupportedLookAndFeelException ex) {
+                    throw new IllegalStateException(ex);
                 }
                 try {
                     // Load the background image
-                    darkeasy = ImageIO.read(this.getClass().getResource(img));
+                    darkeasy = ImageIO.read(Objects.requireNonNull(this.getClass().getResource(img)));
 
                     frame.setSize(800,800);                  
-                    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                    frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
                     frame.setLocationRelativeTo(null);
                     frame.setAlwaysOnTop(true);
                     frame.setResizable(false);
@@ -143,60 +146,45 @@ public class guieasy {
 
                     frame.setLocationRelativeTo(null);
 
-                    quitItem.addActionListener(new ActionListener() {
-                        public void actionPerformed(ActionEvent e) {
-                            if (e.getSource() == quitItem) {
-                                //System.out.println("Thank you for playing.  Good bye.");
-                                System.exit(0);
-                            }
+                    quitItem.addActionListener(e -> {
+                        if (e.getSource() == quitItem) {
+
+                            System.exit(0);
                         }
                     });
 
-                    /**
-                     * Press enter after typing the number in the text field.
-                     */
+                    enter.addActionListener(e -> {
+                        player = Integer.parseInt(field1.getText());
 
-                    enter.addActionListener(new ActionListener() {
-                        public void actionPerformed(ActionEvent e) {
-                            player = Integer.parseInt(field1.getText());
+                        if (player < 1) {
+                            System.out.println("Enter a number between 1 and 10");
 
-                            if (player < 1) {
-                                System.out.println("Enter a number between 1 and 10");
+                        } else if (player > 10) {
+                            System.out.println("Enter a number between 1 and 10");
+                        } else {
+                            textArea.setVisible(false);
+                            question = new JLabel(Level.playerAnswer());
+                            question.setFont(new Font("Serif", Font.PLAIN, 20));
+                            question.setOpaque(false);
+                            question.setForeground(color);
+                            question.setText("<html><div style=\"width:300px;height:450px;\">"
+                                    + Level.playerAnswer() + "</div></html>");
+                            frame.add(question, gbc);
 
-                            } else if (player > 10) {
-                                System.out.println("Enter a number between 1 and 10");
-                            } else {
-                                textArea.setVisible(false);
-                                question = new JLabel(Level.playerAnswer());
-                                question.setFont(new Font("Serif", Font.PLAIN, 20));
-                                question.setOpaque(false);
-                                question.setForeground(color);
-                                question.setText("<html><div style=\"width:300px;height:450px;\">"
-                                        + Level.playerAnswer() + "</div></html>");
-                                frame.add(question, gbc);
-
-                                h.setVisible(true);
-                                field2.setVisible(true);
-                                check.setVisible(true);
-                                enter.setVisible(false);
-                                field1.setVisible(false);
-                            }
+                            h.setVisible(true);
+                            field2.setVisible(true);
+                            check.setVisible(true);
+                            enter.setVisible(false);
+                            field1.setVisible(false);
                         }
                     });
-                    /**
-                     * This button is visible once the question comes up and gives you a hint if you
-                     * need it.
-                     */
-                    h.addActionListener(new ActionListener() {
-                        public void actionPerformed(ActionEvent e) {
-                            if (e.getSource() == h) {
-                                System.out.println(Hint.hint());
-                                hint.setText("<html><div style=\"width:100px;height:0px;\">" + Hint.hint()
-                                        + "</div></html>");
-                                hint.setFont(new Font("Serif", Font.PLAIN, 20));
-                                hint.setForeground(color);
-                                frame.add(hint, gbc);
-                            }
+
+                    h.addActionListener(e -> {
+                        if (e.getSource() == h) {
+                            frame.add(hint, gbc);
+                            hint.setText( Hint.hints());
+                            hint.setFont(new Font("Serif", Font.PLAIN, 20));
+                            hint.setForeground(color);
 
                         }
 
@@ -204,22 +192,16 @@ public class guieasy {
                     /**
                      * You go back to the choice of level.
                      */
-                    back.addActionListener(new ActionListener() {
-                        public void actionPerformed(ActionEvent e) {
-                            Points.point = 0;
-                            GUI2.jeu();
-                            frame.setVisible(false);
+                    back.addActionListener(e -> {
+                        Points.setPoint(0);
+                        GUI2.jeu();
+                        frame.setVisible(false);
 
-                        }
                     });
-                    /**
-                     * This button is visible once the question comes up.
-                     * It checks if the answer is good or not.
-                     */
+
                     check.addActionListener(e -> {
                         if (e.getSource() == check) {
                             answer = field2.getText().toLowerCase();
-
                         }
                         label.setText("<html><div style=\"width:200px;height:450px;\">" + level.goodEasy()
                                 + "</div></html>");
@@ -230,6 +212,7 @@ public class guieasy {
                 } catch (IOException exp) {
                     exp.printStackTrace();
                 }
+
             }
         });
         frame.setContentPane(pan);

@@ -170,44 +170,38 @@ public class guimed {
                         }
                     });
 
-                    h.addActionListener(new ActionListener() {
-                        public void actionPerformed(ActionEvent e) {
-                            if (e.getSource() == h)
-                                System.out.println(Hint.hint());
-                            hint.setText(
-                                    "<html><div style=\"width:100px;height:0px;\">" + Hint.hint() + "</div></html>");
+                    h.addActionListener(e -> {
+                        if (e.getSource() == h){
+                            frame.add(hint, gbc);
+                            hint.setText( Hint.hints());
                             hint.setFont(new Font("Serif", Font.PLAIN, 20));
                             hint.setForeground(color);
-                            frame.add(hint, gbc);
 
                         }
+
                     });
-                    back.addActionListener(new ActionListener() {
-                        public void actionPerformed(ActionEvent e) {
-                            GUI2.jeu();
-                            frame.setVisible(false);
+                    back.addActionListener(e -> {
+                        GUI2.jeu();
+                        frame.setVisible(false);
 
-                        }
                     });
-                    check.addActionListener(new ActionListener() {
-                        public void actionPerformed(ActionEvent e) {
+                    check.addActionListener(e -> {
 
-                            if (e.getSource() == check) {
+                        if (e.getSource() == check) {
 
-                                answer = text2.getText().toLowerCase();
+                            answer = text2.getText().toLowerCase();
 
-                            }
-                            label.setText("<html><div style=\"width:200px;height:300px;\">" + level.goodMedium()
-                                    + "</div></html>");
-                            label.setFont(new Font("Serif", Font.PLAIN, 20));
-                            label.setForeground(color);
-                            frame.add(label, gbc);
                         }
-
+                        label.setText("<html><div style=\"width:200px;height:300px;\">" +level.goodMedium()
+                                + "</div></html>");
+                        label.setFont(new Font("Serif", Font.PLAIN, 20));
+                        label.setForeground(color);
+                        frame.add(label, gbc);
                     });
                 } catch (IOException exp) {
                     exp.printStackTrace();
                 }
+
 
             }
         });

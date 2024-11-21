@@ -1,0 +1,86 @@
+<html>
+<head>
+<title>GUI.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cf8e6d;}
+.s1 { color: #bcbec4;}
+.s2 { color: #bcbec4;}
+.s3 { color: #6aab73;}
+.s4 { color: #7a7e85;}
+.s5 { color: #5f826b; font-style: italic;}
+.s6 { color: #2aacb8;}
+</style>
+</head>
+<body bgcolor="#1e1f22">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+GUI.java</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span><span class="s1">Enigma</span><span class="s2">;</span>
+
+<span class="s0">import </span><span class="s1">java</span><span class="s2">.</span><span class="s1">awt</span><span class="s2">.*;</span>
+<span class="s0">import </span><span class="s1">java</span><span class="s2">.</span><span class="s1">awt</span><span class="s2">.</span><span class="s1">image</span><span class="s2">.*;</span>
+<span class="s0">import </span><span class="s1">javax</span><span class="s2">.</span><span class="s1">swing</span><span class="s2">.*;</span>
+
+
+<span class="s1">@SuppressWarnings</span><span class="s2">(</span><span class="s3">&quot;serial&quot;</span><span class="s2">)</span>
+<span class="s0">public class </span><span class="s1">GUI </span><span class="s0">extends </span><span class="s1">AbstractFrame </span><span class="s2">{</span>
+
+    <span class="s0">public static </span><span class="s1">Main m1</span><span class="s2">=</span><span class="s0">new </span><span class="s1">Main</span><span class="s2">();</span>
+    <span class="s4">// private static GUI2 gui2;</span>
+    <span class="s4">// private static Level level;</span>
+
+    <span class="s0">private </span><span class="s1">JPanel pan</span><span class="s2">;</span>
+    <span class="s0">private </span><span class="s1">JMenuBar menubar</span><span class="s2">;</span>
+    <span class="s0">private </span><span class="s1">JMenu optionMenu</span><span class="s2">;</span>
+
+    <span class="s0">private </span><span class="s1">JMenuItem quitItem</span><span class="s2">;</span>
+
+
+    <span class="s0">private </span><span class="s1">BufferedImage forest</span><span class="s2">;</span>
+   
+    <span class="s0">public static void </span><span class="s1">main</span><span class="s2">(</span><span class="s1">String</span><span class="s2">[] </span><span class="s1">args</span><span class="s2">) {</span>
+        <span class="s1">GUI gui</span><span class="s2">=</span><span class="s0">new </span><span class="s1">GUI</span><span class="s2">();</span>
+        <span class="s1">gui</span><span class="s2">.</span><span class="s1">showFrame</span><span class="s2">();</span>
+
+    <span class="s2">}</span>
+
+    <span class="s5">/**</span>
+     <span class="s5">* Constructeur d'objets de classe GUI</span>
+     <span class="s5">*/</span>
+    <span class="s0">private </span><span class="s1">GUI</span><span class="s2">() {</span>
+        <span class="s0">super</span><span class="s2">(</span><span class="s3">&quot;Enigma&quot;</span><span class="s2">);</span>
+            <span class="s2">}</span>
+
+    <span class="s1">@Override</span>
+    <span class="s0">protected void </span><span class="s1">setupFrame</span><span class="s2">() {</span>
+
+        <span class="s1">Font font</span><span class="s2">= </span><span class="s0">new </span><span class="s1">Font</span><span class="s2">(</span><span class="s3">&quot;serif&quot;</span><span class="s2">, </span><span class="s1">Font</span><span class="s2">.</span><span class="s1">PLAIN</span><span class="s2">, </span><span class="s6">20</span><span class="s2">);</span>
+        <span class="s1">JButton play </span><span class="s2">= </span><span class="s0">new </span><span class="s1">JButton</span><span class="s2">(</span><span class="s3">&quot;Play&quot;</span><span class="s2">);</span>
+        <span class="s1">Color color </span><span class="s2">= </span><span class="s0">new </span><span class="s1">Color</span><span class="s2">(</span><span class="s6">255</span><span class="s2">, </span><span class="s6">255</span><span class="s2">, </span><span class="s6">255</span><span class="s2">);</span>
+        <span class="s0">this</span><span class="s2">.</span><span class="s1">setLayout</span><span class="s2">(</span><span class="s0">new </span><span class="s1">GridBagLayout</span><span class="s2">());</span>
+
+        <span class="s1">GridBagConstraints gbc </span><span class="s2">= </span><span class="s0">new </span><span class="s1">GridBagConstraints</span><span class="s2">();</span>
+        <span class="s1">gbc</span><span class="s2">.</span><span class="s1">gridwidth </span><span class="s2">= </span><span class="s1">GridBagConstraints</span><span class="s2">.</span><span class="s1">REMAINDER</span><span class="s2">;</span>
+
+        <span class="s1">JTextArea textArea </span><span class="s2">= </span><span class="s0">new </span><span class="s1">JTextArea</span><span class="s2">(</span>
+                <span class="s1">m1</span><span class="s2">.</span><span class="s1">intro</span><span class="s2">());</span>
+        <span class="s1">textArea</span><span class="s2">.</span><span class="s1">setFont</span><span class="s2">(</span><span class="s1">font</span><span class="s2">);</span>
+        <span class="s1">textArea</span><span class="s2">.</span><span class="s1">setLineWrap</span><span class="s2">(</span><span class="s0">false</span><span class="s2">);</span>
+        <span class="s1">textArea</span><span class="s2">.</span><span class="s1">setWrapStyleWord</span><span class="s2">(</span><span class="s0">true</span><span class="s2">);</span>
+        <span class="s1">textArea</span><span class="s2">.</span><span class="s1">setOpaque</span><span class="s2">(</span><span class="s0">false</span><span class="s2">);</span>
+        <span class="s1">textArea</span><span class="s2">.</span><span class="s1">setEditable</span><span class="s2">(</span><span class="s0">false</span><span class="s2">);</span>
+        <span class="s1">textArea</span><span class="s2">.</span><span class="s1">setForeground</span><span class="s2">(</span><span class="s1">color</span><span class="s2">);</span>
+        
+        <span class="s1">play</span><span class="s2">.</span><span class="s1">addActionListener</span><span class="s2">(</span><span class="s1">e -&gt; GUI2</span><span class="s2">.</span><span class="s1">jeu</span><span class="s2">());</span>
+        <span class="s1">play</span><span class="s2">.</span><span class="s1">setFont</span><span class="s2">(</span><span class="s1">font</span><span class="s2">);</span>
+        <span class="s4">// Ajout du panneau au JFrame</span>
+        <span class="s0">this</span><span class="s2">.</span><span class="s1">add</span><span class="s2">(</span><span class="s1">textArea</span><span class="s2">, </span><span class="s1">gbc</span><span class="s2">);</span>
+        <span class="s0">this</span><span class="s2">.</span><span class="s1">add</span><span class="s2">(</span><span class="s1">play</span><span class="s2">,</span><span class="s1">gbc</span><span class="s2">);</span>
+
+    <span class="s2">}</span>
+<span class="s2">}</span></pre>
+</body>
+</html>

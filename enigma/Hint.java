@@ -2,23 +2,15 @@ package enigma;
 
 import java.util.*;
 
-/**
- * Décrivez votre classe Hint ici.
- *
- * @author (votre nom)
- * @version (un numéro de version ou une date)
- */
 public class Hint {
-    // variables d'instance - remplacez l'exemple qui suit par le vôtre
 
-    public static LinkedHashMap<Integer, String> hint;
+    protected static Map<Integer, String> hint=new LinkedHashMap<>();
 
     /**
      * The constructor initializes the Hashmap Hint
      */
     public Hint() {
-        // initialisation des variables d'instance
-        hint = new LinkedHashMap<Integer, String>();
+
         easyH();
         mediumH();
         hardH();
@@ -26,11 +18,11 @@ public class Hint {
 
     private void easyH() {
 
-        hint.put(1, "Try to answer each sentence seperately.");
+        hint.put(1, "Try to answer each sentence separately.");
         hint.put(2, "Time goes during this sequence. ");
         hint.put(3, "How many do we need at least ?");
         hint.put(4, "At what moment will you take the first pill ?");
-        hint.put(5, "Be careful of the proportionnality.");
+        hint.put(5, "Be careful of the proportionality.");
         hint.put(6, "Be careful of the oversight.");
         hint.put(7, "What is the essential element to see your reflect in a mirror ?");
         hint.put(8, "No need of a calculator.");
@@ -70,10 +62,5 @@ public class Hint {
         hint.put(30, "The answer is neutral.");
     }
 
-    public static String hint() {
-        if (!hint.containsKey(Level.player)) {
-            System.out.println("error");
-        }
-        return hint.get(Level.player);
-    }
+    protected static String hints () {return hint.get(Level.player);}
 }

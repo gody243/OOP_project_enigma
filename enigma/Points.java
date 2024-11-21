@@ -7,9 +7,16 @@ package enigma;
  * @version (16/01/2019)
  */
 
-public class Points {
+class Points {
 
     // variables d'instance - remplacez l'exemple qui suit par le vôtre
-    public static int point = 0;
+    private static int point = 0;
 
+    public static int getPoint () {
+        return point;
+    }
+
+    public static void setPoint (int point) {
+        Points.point = point;
+    }
 }
